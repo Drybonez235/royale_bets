@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+    /* Define the custom animations in Tailwind CSS */
+@layer utilities {
+        @keyframes slideInTop {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Add the custom classes to Tailwind */
+        .animate-slideInTop {
+            animation: slideInTop 1s ease-out forwards;
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Add the delays */
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+        .delay-1500 {
+            animation-delay: 1.5s;
+        }
+        .delay-2000 {
+            animation-delay: 2s;
+        }
+    }

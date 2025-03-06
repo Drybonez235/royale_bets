@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Prediction Bot</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-cover text-black flex flex-col items-center" style="background-image: url('/public/rbbackground.png');">
+
+    <!-- Logo -->
+    <img src="/public/rblogo2.png" alt="Logo" class="w-80 mb-6">
+
+    <!-- Description -->
+    <p class="text-4xl text-center max-w-xl mb-6">
+        One battle, one Bet!
+    </p>
+    <p class="text-2xl text-center max-w-xl mb-6">
+        Enter your Clash ID below to link your Twitch account and start using the bot.
+    </p>
+    <!-- Clash ID Input Component -->
+    <div id="clash-id-container" class="relative">
+        <p id="clash-id-text" class="text-black w-80 text-lg cursor-pointer hover:text-gray-100 transition">
+            Enter your Clash ID
+        </p>
+        <input 
+            type="text" 
+            id="clash-id-input" 
+            class="hidden bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter Clash ID"
+        />
+    </div>
+
+    <!-- Connect with Twitch Button (Initially Hidden) -->
+    <a id="twitch-link" href="#" 
+        class="hidden w-80 text-center mt-4 px-6 py-3 bg-gray-900 hover:bg-purple-700 text-white font-semibold text-lg rounded-lg shadow-lg transition animate-pulse">
+        <img src="/public/twitch_wordmark_extruded_purple.png" class="mx-auto w-28">
+        Connect Now!
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const clashIdText = document.getElementById("clash-id-text");
+            const clashIdInput = document.getElementById("clash-id-input");
+            const twitchLink = document.getElementById("twitch-link");
+
+            // When user hovers over the text, replace it with an input field
+            clashIdText.addEventListener("mouseover", function () {
+                clashIdText.classList.add("hidden"); // Hide text
+                clashIdInput.classList.remove("hidden"); // Show input
+                clashIdInput.focus(); // Focus input field
+            });
+
+            // Show "Connect with Twitch" after entering Clash ID
+            clashIdInput.addEventListener("input", function () {
+                if (clashIdInput.value.trim() !== "") {
+                    twitchLink.classList.remove("hidden"); // Show the Twitch link
+                    twitchLink.href = generateTwitchURL(clashIdInput.value.trim()); // Generate dynamic URL
+                } else {
+                    twitchLink.classList.add("hidden"); // Hide if input is empty
+                }
+            });
+
+            // Function to generate the Twitch connection URL dynamically
+            function generateTwitchURL(clashId) {
+                // Assuming you have a function that generates a Twitch OAuth URL
+                return `https://twitch.tv/oauth?clash_id=${encodeURIComponent(clashId)}`;
+            }
+        });
+    </script>
+
+</body>
+</html>
