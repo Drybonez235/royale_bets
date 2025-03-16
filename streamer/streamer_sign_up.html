@@ -9,7 +9,7 @@
 <body class="h-screen bg-cover text-black flex flex-col items-center" style="background-image: url('/public/rbbackground.png');">
 
     <!-- Logo -->
-    <img src="/public/rblogo2.png" alt="Logo" class="w-80 mb-6">
+    <a href="http://localhost:5173"><img src="/public/rblogo2.png" alt="Logo" class="w-80 mb-6"></a>
 
     <!-- Description -->
     <p class="text-2xl text-center max-w-xl mb-6">
@@ -17,14 +17,12 @@
     </p>
     <!-- Clash ID Input Component -->
     <div id="clash-id-container" class="relative">
-        <!-- <p id="clash-id-text" class="text-black w-80 text-lg text-center cursor-pointer hover:text-gray-100 transition">
-            Enter your Clash ID
-        </p> -->
         <input 
             type="text" 
             id="clash-id-input" 
             class=" bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
             placeholder="Enter Clash ID"
+            value="2VL9VP8Y0"
         />
     </div>
 
@@ -49,12 +47,6 @@
     errorMessage.textContent = "Invalid Clash ID. Please check and try again.";
     clashIdInput.parentNode.appendChild(errorMessage);
 
-    // When user hovers over the text, replace it with an input field
-    // clashIdText.addEventListener("mouseover", function () {
-    //     clashIdText.classList.add("hidden"); // Hide text
-    //     clashIdInput.classList.remove("hidden"); // Show input
-    //     clashIdInput.focus(); // Focus input field
-    // });
 
     // API call function
     async function verifyClashId(clashId) {
@@ -67,8 +59,8 @@
                 body: JSON.stringify({clash_id: clashId}),
             });
 
-            const data = await response.json();
-            return data.valid; // Assuming API returns { "valid": true } or { "valid": false }
+            let data = await response.json();
+            return data; // Assuming API returns { "valid": true } or { "valid": false }
         } catch (error) {
             console.error("Error verifying Clash ID:", error);
             return false;
@@ -81,11 +73,12 @@
 
         // Call API only if input length is greater than 6
         if (clashId.length > 6) {
-            const isValid = await verifyClashId(clashId);
+            const data = await verifyClashId(clashId);
 
+            const isValid = data.valid
             if (isValid) {
                 twitchLink.classList.remove("hidden"); // Show Twitch link
-                twitchLink.href = generateTwitchURL(clashId); // Generate dynamic Twitch URL
+                twitchLink.href = data.URL// generateTwitchURL(data.URL); // Generate dynamic Twitch URL
                 errorMessage.classList.add("hidden"); // Hide error message if valid
             } else {
                 twitchLink.classList.add("hidden"); // Hide Twitch link
