@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Bet</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-cover flex flex-col items-center bg-gray-900 text-white" style="background-image: url('/public/rbbackground.png');">
+   <div>
+    <a href="http://localhost:5173"><img src="/public/rblogo2.png" alt="Logo" class="w-80 mb-6"></a>
+</div>
+    <div class="text-center text-black">
+        <!-- Input Prompt -->
+        <p class="text-2xl mb-4">
+            Enter your screen name and the player tag of the streamer you are betting on!
+            <!-- Question Mark Icon with Tooltip -->
+            <span class="relative group inline-block">
+                <img src="/public/info.png" alt="Help" class="w-6 h-6 inline cursor-pointer">
+                <span class="absolute left-16 transform -translate-x-10 mt-2 w-64 bg-gray-800 text-white text-sm p-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition">
+                    You can find player tag by typing in the players name at
+                    <a href="https://royaleapi.com/?lang=en" target="_blank" class="text-blue-400 underline hover:text-blue-300">
+                        RoyaleAPI.com
+                    </a>
+                </span>
+            </span>
+        </p>
+    </div>
+
+    <div id="ViewerScreenNameInputDiv" class="relative flex flex-col items-center mb-2">
+        <!-- Player Tag Input -->
+        <input 
+            type="text" 
+            id="ViewerScreenNameInput" 
+            class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Screen Name"
+        />
+    </div>
+
+    <div id="playerTagInputDiv" class="relative flex flex-col items-center">
+        <!-- Player Tag Input -->
+        <input 
+            type="text" 
+            id="playerTagInput" 
+            class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Streamer Player Tag"
+            value="2VL9VP8Y0"
+        />
+        <!-- Error Message -->
+        <p id="error-message" class="hidden text-red-500 mt-2 text-sm">
+            Invalid Clash ID. Please check and try again.
+        </p>
+    </div>
+
+    <!-- Treasure Chest (Hidden Initially) -->
+    <div id="treasureChest" class="hidden mt-4">
+        <a href="http://localhost:5173/viewer/bet_interface.html"><img src="/public/Chest_Overflowing_Gold_Crate.png" alt="Treasure Chest" class="w-40 transition animate-pulse"></a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const playerTagInput = document.getElementById("playerTagInput");
+            const treasureChest = document.getElementById("treasureChest");
+            const errorMessage = document.getElementById("error-message");
+
+            playerTagInput.addEventListener("input", async function () {
+                const playerTag = playerTagInput.value.trim();
+
+                // Only proceed if input length is greater than 6
+                if (playerTag.length > 6) {
+                    try {
+                        const response = await fetch("http://localhost:3000/verify_player_tag", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ clash_id: playerTag, req_page: "player_tag_input" })
+                        });
+
+                        const isValid = await response.json();
+
+                        if (isValid) {
+                            treasureChest.classList.remove("hidden"); // Show chest
+                            errorMessage.classList.add("hidden"); // Hide error if valid
+                        } else {
+                            treasureChest.classList.add("hidden"); // Hide chest
+                            errorMessage.classList.remove("hidden"); // Show error message
+                        }
+                    } catch (error) {
+                        console.error("Error verifying player tag:", error);
+                        errorMessage.classList.remove("hidden"); // Show error on request failure
+                    }
+                } else {
+                    treasureChest.classList.add("hidden");
+                    errorMessage.classList.add("hidden"); // Hide error for short input
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

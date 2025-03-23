@@ -56,7 +56,7 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({clash_id: clashId}),
+                body: JSON.stringify({clash_id: clashId, "req_page":"streamer_sign_up"}),
             });
 
             let data = await response.json();

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Interface</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-900 text-white flex flex-col" style="background-image: url('/public/cloudsbg.png');">
+
+    <!-- Main Container (Grid Layout) -->
+    <div class="container mx-auto p-4 grid grid-cols-12 gap-4 h-full">
+
+        <!-- Logo (Upper Left) -->
+        <div class="col-span-3 row-span-1 flex items-center">
+            <a href="http://localhost:5173">
+                <img src="/public/rblogo2.png" alt="Logo" class="w-64">
+            </a>
+        </div>
+
+        <!-- Streamer Stats (Upper Middle) -->
+        <div class="col-span-5 row-span-1">
+            <div class="bg-gray-800 p-4 rounded-xl shadow-lg w-full h-full">
+                <h2 class="text-xl font-bold mb-2">Streamer Stats</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <span class="font-semibold">Streamer Name:</span> 
+                        <span id="streamer-name">N/A</span>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <span class="font-semibold">Player Tag:</span> 
+                        <span id="streamer-tag">N/A</span>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <span class="font-semibold">Games Played:</span> 
+                        <span id="games-played">N/A</span>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <span class="font-semibold">Win Percentage:</span> 
+                        <span id="win-percentage">N/A</span>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg col-span-2 text-center">
+                        <span class="font-semibold">Stream Up Time:</span> 
+                        <span id="stream-up-time">N/A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard (Full Height, Right Side) -->
+        <section id="leaderboard" class="col-span-4 row-span-3 bg-gray-800 p-4 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
+            <div class="overflow-y-auto max-h-full">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-700 text-white">
+                            <th class="p-2 text-center">Rank</th>
+                            <th class="p-2 text-center">Screen Name</th>
+                            <th class="p-2 text-center">Total Points</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboard-body">
+                        <tr class="bg-gray-600 text-center">
+                            <td class="p-2">1</td>
+                            <td class="p-2">ShadowKnight</td>
+                            <td class="p-2">15,320</td>
+                        </tr>
+                        <tr class="bg-gray-700 text-center">
+                            <td class="p-2">2</td>
+                            <td class="p-2">RoyalBetsKing</td>
+                            <td class="p-2">14,980</td>
+                        </tr>
+                        <!-- More leaderboard entries -->
+                        <tr class="bg-gray-600 text-center">
+                            <td class="p-2">3</td>
+                            <td class="p-2">GamerPro99</td>
+                            <td class="p-2">12,450</td>
+                        </tr>
+                        <tr class="bg-gray-700 text-center">
+                            <td class="p-2">4</td>
+                            <td class="p-2">BetMaster</td>
+                            <td class="p-2">11,875</td>
+                        </tr>
+                        <tr class="bg-gray-600 text-center">
+                            <td class="p-2">5</td>
+                            <td class="p-2">LuckyStriker</td>
+                            <td class="p-2">10,320</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Betting Interface Section - Left Side -->
+        <div class="col-span-8 row-span-2">
+            <div class="grid grid-cols-2 gap-4">
+            <!-- Bet Placement -->
+            <section id="bet-placement" class="bg-gray-800 p-4 rounded-xl shadow-lg mb-4 col-span-1">
+                <h2 class="text-xl font-bold mb-2">Place Your Bet</h2>
+                <p class="mb-3">Build your bet below:</p>
+                <div id="bet_builder_interface" class="text-black">
+                    <div id="battle_que" class="p-2 rounded-xl">
+                        <div id="que_boxes" class="inline-block">
+                            <div id="box_0" class="inline-block bg-white rounded-xl p-3 w-full max-w-md">
+                                <div id="grid_0">
+                                    <div id="top_section_0" class="border-b-2 pb-2 flex justify-end">
+                                        <button id="reset_bet_button" class="bg-red-500 text-white rounded-full py-1 px-3 text-sm">
+                                            Reset Bet
+                                        </button>
+                                    </div>
+                                    <div id="middle_1" class="my-4">
+                                        <div id="win_loss_toggle_div_1" class="flex items-center justify-center">
+                                            <span class="mr-2 text-gray-700">Lose</span>
+                                            <label id="win_loss_toggle_1" class="relative inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" id="win_loss_toggle_input_value" class="sr-only peer" />
+                                                <div class="w-12 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 
+                                                    after:content-[''] after:absolute after:top-0.5 after:left-[2px] 
+                                                    after:bg-white after:border-gray-300 after:border after:rounded-full 
+                                                    after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-6">
+                                                </div>
+                                            </label>
+                                            <span class="ml-2 text-gray-700">Win</span>
+                                        </div>
+                                    </div>
+                                    <div id="end_1" class="border-t-2 pt-3">
+                                        <div class="flex items-center justify-center mb-3">
+                                            <input id="points_bet_1" type="number" min="0" max="1000000" step="25" value="0"
+                                                class="bg-gray-200 w-24 h-8 text-center rounded" />
+                                            <img class="h-6 mx-3" src="arrow.png" alt="arrow" />
+                                            <p id="calculated_bet_number" class="text-lg font-bold">0</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <button id="place_bet"
+                                                class="bg-yellow-400 hover:bg-yellow-300 text-gray-800 font-bold py-2 px-6 rounded-full">
+                                                Place Bet
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+    
+            <!-- Pending Bets & Past Bets -->
+                <!-- Pending Bets -->
+                <section id="pending-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-bold mb-2">Pending Bets</h2>
+                    <ul class="space-y-2" id="pending-bets-list">
+                        <li class="bg-gray-700 p-2 rounded">
+                            <div class="flex justify-between">
+                                <span>Win bet: 100 pts</span>
+                                <span class="text-yellow-400">Pending</span>
+                            </div>
+                        </li>
+                        <li class="bg-gray-700 p-2 rounded">
+                            <div class="flex justify-between">
+                                <span>Lose bet: 50 pts</span>
+                                <span class="text-yellow-400">Pending</span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+        
+                <!-- Past Bet Results -->
+                <section id="past-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg">
+                    <h2 class="text-xl font-bold mb-2">Past Bets</h2>
+                    <ul class="space-y-2" id="past-bets-list">
+                        <li class="bg-gray-700 p-2 rounded">
+                            <div class="flex justify-between">
+                                <span>Win bet: 75 pts</span>
+                                <span class="text-green-400">Won: +150 pts</span>
+                            </div>
+                        </li>
+                        <li class="bg-gray-700 p-2 rounded">
+                            <div class="flex justify-between">
+                                <span>Lose bet: 25 pts</span>
+                                <span class="text-red-400">Lost</span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Your JavaScript can go here
+    </script>
+</body>
+</html>
