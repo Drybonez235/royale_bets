@@ -12,7 +12,7 @@
     <div class="container mx-auto p-4 grid grid-cols-12 gap-4 h-full">
 
         <!-- Logo (Upper Left) -->
-        <div class="col-span-3 row-span-1 flex items-center">
+        <div class="col-span-3 row-span-2 flex items-center">
             <a href="http://localhost:5173">
                 <img src="/public/rblogo2.png" alt="Logo" class="w-64">
             </a>
@@ -93,96 +93,158 @@
 
         <!-- Betting Interface Section - Left Side -->
         <div class="col-span-8 row-span-2">
-            <div class="grid grid-cols-2 gap-4">
-            <!-- Bet Placement -->
-            <section id="bet-placement" class="bg-gray-800 p-4 rounded-xl shadow-lg mb-4 col-span-1">
-                <h2 class="text-xl font-bold mb-2">Place Your Bet</h2>
-                <p class="mb-3">Build your bet below:</p>
-                <div id="bet_builder_interface" class="text-black">
-                    <div id="battle_que" class="p-2 rounded-xl">
-                        <div id="que_boxes" class="inline-block">
-                            <div id="box_0" class="inline-block bg-white rounded-xl p-3 w-full max-w-md">
-                                <div id="grid_0">
-                                    <div id="top_section_0" class="border-b-2 pb-2 flex justify-end">
-                                        <button id="reset_bet_button" class="bg-red-500 text-white rounded-full py-1 px-3 text-sm">
-                                            Reset Bet
-                                        </button>
-                                    </div>
-                                    <div id="middle_1" class="my-4">
-                                        <div id="win_loss_toggle_div_1" class="flex items-center justify-center">
-                                            <span class="mr-2 text-gray-700">Lose</span>
-                                            <label id="win_loss_toggle_1" class="relative inline-flex items-center cursor-pointer">
-                                                <input type="checkbox" id="win_loss_toggle_input_value" class="sr-only peer" />
-                                                <div class="w-12 h-6 bg-gray-200 rounded-full peer-checked:bg-blue-600 
-                                                    after:content-[''] after:absolute after:top-0.5 after:left-[2px] 
-                                                    after:bg-white after:border-gray-300 after:border after:rounded-full 
-                                                    after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-6">
-                                                </div>
-                                            </label>
-                                            <span class="ml-2 text-gray-700">Win</span>
-                                        </div>
-                                    </div>
-                                    <div id="end_1" class="border-t-2 pt-3">
-                                        <div class="flex items-center justify-center mb-3">
-                                            <input id="points_bet_1" type="number" min="0" max="1000000" step="25" value="0"
-                                                class="bg-gray-200 w-24 h-8 text-center rounded" />
-                                            <img class="h-6 mx-3" src="arrow.png" alt="arrow" />
-                                            <p id="calculated_bet_number" class="text-lg font-bold">0</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <button id="place_bet"
-                                                class="bg-yellow-400 hover:bg-yellow-300 text-gray-800 font-bold py-2 px-6 rounded-full">
-                                                Place Bet
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="col-span-4 grid grid-cols-subgrid gap-6 justify-center" id="betting_interface">
+              <!-- Bet Placement -->
+               
+                <div class="bg-white text-black col-span-4" id="betting_interface_box">
+                    <div class="grid grid-cols-subgrid gap-6" id="grid_stuff">
+                        <div class="col-span-1 col-start-1">
+                            <button
+                            id="reset_bet_button"
+                            class="bg-red-500 rounded-3xl text-sm "
+                          >
+                            Reset Bet
+                          </button>
                         </div>
-                    </div>
-                </div> 
-            </section>
-    
-            <!-- Pending Bets & Past Bets -->
-                <!-- Pending Bets -->
-                <section id="pending-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-bold mb-2">Pending Bets</h2>
-                    <ul class="space-y-2" id="pending-bets-list">
-                        <li class="bg-gray-700 p-2 rounded">
-                            <div class="flex justify-between">
-                                <span>Win bet: 100 pts</span>
-                                <span class="text-yellow-400">Pending</span>
-                            </div>
-                        </li>
-                        <li class="bg-gray-700 p-2 rounded">
-                            <div class="flex justify-between">
-                                <span>Lose bet: 50 pts</span>
-                                <span class="text-yellow-400">Pending</span>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+                        <div class="col-span-1 row-span-2 col-start-2">
+                            <img src="/public/emote_king_thumbs_up_01.png" class="h-20">
+                            <p>Win</p>
+                        </div>
+                        <div class="col-span-2 col-start-3 justify-center" id="crowns_taken_row">
+                            <label class="inline-flex items-center  cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                            </label>
+                            <div class="group inline" id="crowns_taken_div">
+                                <input
+                                  class="hidden"
+                                  id="red_crowns_checked"
+                                  type="number"
+                                  value="0"
+                                  step="1"
+                                />
+                                <img
+                                  id="r1"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                                <img
+                                  id="r2"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                                <img
+                                  id="r3"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                              </div>
+                        </div><!-- Crowns taken row-->
+                        <div class="col-span-1 row-start-2">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                        <div class="col-span-2 col-start-3 row-start-2" id="crowns_lost_row">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                            </label>
+                            <div class="group inline" id="crowns_taken_div">
+                                <input
+                                  class="hidden"
+                                  id="red_crowns_checked"
+                                  type="number"
+                                  value="0"
+                                  step="1"
+                                />
+                                <img
+                                  id="r1"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                                <img
+                                  id="r2"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                                <img
+                                  id="r3"
+                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
+                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                />
+                              </div>
+                        </div><!-- Crowns lost row-->
+                        <div class="col-span-1 col-start-1 row-start-3">
+                            <input
+                            class="ml-3 bg-slate-300 w-14"
+                            min="0"
+                            max="1000000"
+                            step="25"
+                            value="0"
+                            id="points_bet_1"
+                            type="number"
+                          />
+                          <p>Points Bet</p>
+                        </div><!--Points bet-->
+                        <div>
+                            <p>1000</p>
+                            <p>Potential Points</p>
+                        </div><!--Potential Winnings-->
+                        <div class="col-span-2 col-start-3 row-start-3">
+                            <img src="/public/emote_royal_hog_gold.png" class="h-16 animate-bounce">
+                            <p>Place bet!</p>
+                        </div>
+                    </div><!--The sub grid stuff-->
+               </div>
+                
+                        
+                        
+                   
+            
         
-                <!-- Past Bet Results -->
-                <section id="past-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg">
-                    <h2 class="text-xl font-bold mb-2">Past Bets</h2>
-                    <ul class="space-y-2" id="past-bets-list">
-                        <li class="bg-gray-700 p-2 rounded">
-                            <div class="flex justify-between">
-                                <span>Win bet: 75 pts</span>
-                                <span class="text-green-400">Won: +150 pts</span>
-                            </div>
-                        </li>
-                        <li class="bg-gray-700 p-2 rounded">
-                            <div class="flex justify-between">
-                                <span>Lose bet: 25 pts</span>
-                                <span class="text-red-400">Lost</span>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+                <!-- Pending Bets & Past Bets -->
+                    <!-- Pending Bets -->
+                    <section id="pending-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg col-span-4 col-start-1">
+        
+                        <ul class="space-y-2" id="pending-bets-list">
+                            <li class="bg-gray-700 p-2 rounded">
+                                <div class="flex justify-between">
+                                    <span>Win bet: 100 pts</span>
+                                    <span class="text-yellow-400">Pending</span>
+                                </div>
+                            </li>
+                            <li class="bg-gray-700 p-2 rounded">
+                                <div class="flex justify-between">
+                                    <span>Lose bet: 50 pts</span>
+                                    <span class="text-yellow-400">Pending</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+            
+                    <!-- Past Bet Results -->
+                    <section id="past-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg col-span-4 col-start-5 ">
+            
+                        <ul class="space-y-2" id="past-bets-list">
+                            <li class="bg-gray-700 p-2 rounded">
+                                <div class="flex justify-between">
+                                    <span>Win bet: 75 pts</span>
+                                    <span class="text-green-400">Won: +150 pts</span>
+                                </div>
+                            </li>
+                            <li class="bg-gray-700 p-2 rounded">
+                                <div class="flex justify-between">
+                                    <span>Lose bet: 25 pts</span>
+                                    <span class="text-red-400">Lost</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
             </div>
         </div>
+    </div>
 
     </div>
 
