@@ -40,3 +40,7 @@
             animation-delay: 2s;
         }
     }
+
+    @theme {
+        --color-compliment_blue: #FFE8DD;
+    }

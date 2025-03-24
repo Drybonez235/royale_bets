@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Betting Interface</title>
     <link href="/css/style.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-gray-900 text-white flex flex-col" style="background-image: url('/public/cloudsbg.png');">
+
+<body class="min-h-screen bg-gray-900 text-black flex flex-col" style="background-image: url('/public/cloudsbg.png');">
 
     <!-- Main Container (Grid Layout) -->
     <div class="container mx-auto p-4 grid grid-cols-12 gap-4 h-full">
 
         <!-- Logo (Upper Left) -->
-        <div class="col-span-3 row-span-2 flex items-center">
+        <div class="col-span-3 row-span-1 flex items-center">
             <a href="http://localhost:5173">
-                <img src="/public/rblogo2.png" alt="Logo" class="w-64">
+                <img src="/public/rblogo2.png" alt="Logo" class="w-84">
             </a>
         </div>
 
         <!-- Streamer Stats (Upper Middle) -->
-        <div class="col-span-5 row-span-1">
-            <div class="bg-gray-800 p-4 rounded-xl shadow-lg w-full h-full">
+        <div class="col-span-5 row-span-1  text-black">
+            <div class="bg-linear-to-b  from-amber-100 to-amber-300 p-4 rounded-xl shadow-lg w-full h-full">
                 <h2 class="text-xl font-bold mb-2">Streamer Stats</h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-700 p-3 rounded-lg">
-                        <span class="font-semibold">Streamer Name:</span> 
+                    <div class="bg-amber-50 p-3 rounded-lg">
+                        <span class="font-semibold">Streamer Name:</span>
                         <span id="streamer-name">N/A</span>
                     </div>
-                    <div class="bg-gray-700 p-3 rounded-lg">
-                        <span class="font-semibold">Player Tag:</span> 
+                    <div class="bg-amber-50 p-3 rounded-lg">
+                        <span class="font-semibold">Player Tag:</span>
                         <span id="streamer-tag">N/A</span>
                     </div>
-                    <div class="bg-gray-700 p-3 rounded-lg">
-                        <span class="font-semibold">Games Played:</span> 
+                    <div class="bg-amber-50 p-3 rounded-lg">
+                        <span class="font-semibold">Games Played:</span>
                         <span id="games-played">N/A</span>
                     </div>
-                    <div class="bg-gray-700 p-3 rounded-lg">
-                        <span class="font-semibold">Win Percentage:</span> 
+                    <div class="bg-amber-50 p-3 rounded-lg">
+                        <span class="font-semibold">Win Percentage:</span>
                         <span id="win-percentage">N/A</span>
                     </div>
-                    <div class="bg-gray-700 p-3 rounded-lg col-span-2 text-center">
-                        <span class="font-semibold">Stream Up Time:</span> 
+                    <div class="bg-amber-50 p-3 rounded-lg col-span-2 text-center">
+                        <span class="font-semibold">Stream Up Time:</span>
                         <span id="stream-up-time">N/A</span>
                     </div>
                 </div>
@@ -48,40 +50,66 @@
         </div>
 
         <!-- Leaderboard (Full Height, Right Side) -->
-        <section id="leaderboard" class="col-span-4 row-span-3 bg-gray-800 p-4 rounded-xl shadow-lg">
+        <section id="leaderboard"
+            class="col-span-4 row-span-2  p-4 rounded-xl shadow-lg bg-linear-to-b  from-amber-100 to-amber-300">
             <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
             <div class="overflow-y-auto max-h-full">
-                <table class="w-full border-collapse">
+                <table class="w-full border-collapse border-2">
                     <thead>
-                        <tr class="bg-gray-700 text-white">
+                        <tr class="bg-black text-white">
                             <th class="p-2 text-center">Rank</th>
                             <th class="p-2 text-center">Screen Name</th>
                             <th class="p-2 text-center">Total Points</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboard-body">
-                        <tr class="bg-gray-600 text-center">
-                            <td class="p-2">1</td>
-                            <td class="p-2">ShadowKnight</td>
-                            <td class="p-2">15,320</td>
-                        </tr>
-                        <tr class="bg-gray-700 text-center">
+                        <tr class="bg-amber-100 text-center">
                             <td class="p-2">2</td>
                             <td class="p-2">RoyalBetsKing</td>
                             <td class="p-2">14,980</td>
                         </tr>
                         <!-- More leaderboard entries -->
-                        <tr class="bg-gray-600 text-center">
+                        <tr class="bg-amber-50 text-center">
                             <td class="p-2">3</td>
                             <td class="p-2">GamerPro99</td>
                             <td class="p-2">12,450</td>
                         </tr>
-                        <tr class="bg-gray-700 text-center">
+                        <tr class="bg-amber-100 text-center">
                             <td class="p-2">4</td>
                             <td class="p-2">BetMaster</td>
                             <td class="p-2">11,875</td>
                         </tr>
-                        <tr class="bg-gray-600 text-center">
+                        <tr class="bg-amber-50 text-center">
+                            <td class="p-2">5</td>
+                            <td class="p-2">LuckyStriker</td>
+                            <td class="p-2">10,320</td>
+                        </tr>
+                        <tr class="bg-amber-100 text-center">
+                            <td class="p-2">1</td>
+                            <td class="p-2">ShadowKnight</td>
+                            <td class="p-2">15,320</td>
+                        </tr>
+                        <tr class="bg-amber-50 text-center">
+                            <td class="p-2">5</td>
+                            <td class="p-2">LuckyStriker</td>
+                            <td class="p-2">10,320</td>
+                        </tr>
+                        <tr class="bg-amber-100 text-center">
+                            <td class="p-2">1</td>
+                            <td class="p-2">ShadowKnight</td>
+                            <td class="p-2">15,320</td>
+                        </tr>
+                        <tr class="bg-amber-50 text-center">
+                            <td class="p-2">5</td>
+                            <td class="p-2">LuckyStriker</td>
+                            <td class="p-2">10,320</td>
+                        </tr>
+                        <tr class="bg-amber-100 text-center">
+                            <td class="p-2">1</td>
+                            <td class="p-2">ShadowKnight</td>
+                            <td class="p-2">15,320</td>
+                        </tr>
+                        <tr class="bg-amber-50 text-center">
                             <td class="p-2">5</td>
                             <td class="p-2">LuckyStriker</td>
                             <td class="p-2">10,320</td>
@@ -92,164 +120,308 @@
         </section>
 
         <!-- Betting Interface Section - Left Side -->
-        <div class="col-span-8 row-span-2">
-            <div class="col-span-4 grid grid-cols-subgrid gap-6 justify-center" id="betting_interface">
-              <!-- Bet Placement -->
-               
-                <div class="bg-white text-black col-span-4" id="betting_interface_box">
-                    <div class="grid grid-cols-subgrid gap-6" id="grid_stuff">
-                        <div class="col-span-1 col-start-1">
-                            <button
-                            id="reset_bet_button"
-                            class="bg-red-500 rounded-3xl text-sm "
-                          >
-                            Reset Bet
-                          </button>
+        <div class="col-span-5 ">
+
+            <div class="grid grid-cols-4 gap-2 justify-center" id="betting_interface">
+                <!-- Bet Placement -->
+                <div class="bg-linear-to-b  from-amber-100 to-amber-300 from-40% text-black col-span-4 rounded-xl shadow-md "
+                    id="betting_interface_box">
+
+                    <div class="grid grid-cols-3 gap-2 border-2 rounded-xl p-1" id="grid_stuff">
+                        <!-- Reset Button -->
+                        <div class="col-span-1 col-start-1 row-span-2 flex flex-col justify-center items-center">
+                            <button id="reset_bet_button"
+                                class="bg-rose-600 text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-red-600 transition-colors">
+                                Reset Bet
+                            </button>
+                            <img src="/public/emote_king_thumbs_up_01.png" class="h-20 w-auto object-contain mb-2 "
+                                alt="King character">
+
+                            <div class="items-center">
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" id="second_toggle">
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                    </div>
+                                    <span class="ml-2 text-sm font-medium">Win</span>
+                                </label>
+                            </div>
                         </div>
-                        <div class="col-span-1 row-span-2 col-start-2">
-                            <img src="/public/emote_king_thumbs_up_01.png" class="h-20">
-                            <p>Win</p>
-                        </div>
-                        <div class="col-span-2 col-start-3 justify-center" id="crowns_taken_row">
-                            <label class="inline-flex items-center  cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer">
-                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
-                            </label>
-                            <div class="group inline" id="crowns_taken_div">
-                                <input
-                                  class="hidden"
-                                  id="red_crowns_checked"
-                                  type="number"
-                                  value="0"
-                                  step="1"
-                                />
-                                <img
-                                  id="r1"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                                <img
-                                  id="r2"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                                <img
-                                  id="r3"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                              </div>
-                        </div><!-- Crowns taken row-->
-                        <div class="col-span-1 row-start-2">
+
+
+                        <!-- Crowns Taken Row -->
+                        <div class="col-span-2 col-start-2 space-x-4 flex items-center bg-amber-50 rounded-lg p-3"
+                            id="crowns_taken_row">
+                            <!-- Toggle Switch -->
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer">
-                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                <input type="checkbox" value="" class="sr-only peer" id="crowns_taken_toggle">
+                                <div
+                                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                                <span class="ml-2 text-sm font-medium">Crowns Taken</span>
                             </label>
+
+                            <!-- Crown Images -->
+                            <div class="flex items-center" id="crowns_taken_div">
+                                <input class="hidden" id="red_crowns_checked" type="number" value="0" step="1" />
+                                <div class="flex space-x-1">
+                                    <img id="r1"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 1" />
+                                    <img id="r2"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 2" />
+                                    <img id="r3"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 3" />
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-span-2 col-start-3 row-start-2" id="crowns_lost_row">
+
+
+                        <!-- Crowns Lost Row -->
+                        <div class="col-span-2 col-start-2 row-start-2 flex items-center space-x-4 bg-amber-50 rounded-lg p-4"
+                            id="crowns_lost_row">
+                            <!-- Toggle Switch -->
                             <label class="inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer">
-                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                <input type="checkbox" value="" class="sr-only peer" id="crowns_lost_toggle">
+                                <div
+                                    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                </div>
+                                <span class="ml-2 text-sm font-medium">Crowns Lost</span>
                             </label>
-                            <div class="group inline" id="crowns_taken_div">
-                                <input
-                                  class="hidden"
-                                  id="red_crowns_checked"
-                                  type="number"
-                                  value="0"
-                                  step="1"
-                                />
-                                <img
-                                  id="r1"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                                <img
-                                  id="r2"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                                <img
-                                  id="r3"
-                                  class="cursor-pointer group-hover:visible inline object-contain h-8"
-                                  src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                />
-                              </div>
-                        </div><!-- Crowns lost row-->
-                        <div class="col-span-1 col-start-1 row-start-3">
-                            <input
-                            class="ml-3 bg-slate-300 w-14"
-                            min="0"
-                            max="1000000"
-                            step="25"
-                            value="0"
-                            id="points_bet_1"
-                            type="number"
-                          />
-                          <p>Points Bet</p>
-                        </div><!--Points bet-->
-                        <div>
-                            <p>1000</p>
-                            <p>Potential Points</p>
-                        </div><!--Potential Winnings-->
-                        <div class="col-span-2 col-start-3 row-start-3">
-                            <img src="/public/emote_royal_hog_gold.png" class="h-16 animate-bounce">
-                            <p>Place bet!</p>
+
+                            <!-- Crown Images -->
+                            <div class="flex items-center" id="crowns_lost_div">
+                                <input class="hidden" id="blue_crowns_checked" type="number" value="0" step="1" />
+                                <div class="flex space-x-1">
+                                    <img id="b1"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 1" />
+                                    <img id="b2"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 2" />
+                                    <img id="b3"
+                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                                        alt="Crown 3" />
+                                </div>
+                            </div>
                         </div>
-                    </div><!--The sub grid stuff-->
-               </div>
-                
-                        
-                        
-                   
-            
-        
-                <!-- Pending Bets & Past Bets -->
-                    <!-- Pending Bets -->
-                    <section id="pending-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg col-span-4 col-start-1">
-        
-                        <ul class="space-y-2" id="pending-bets-list">
-                            <li class="bg-gray-700 p-2 rounded">
-                                <div class="flex justify-between">
-                                    <span>Win bet: 100 pts</span>
-                                    <span class="text-yellow-400">Pending</span>
-                                </div>
-                            </li>
-                            <li class="bg-gray-700 p-2 rounded">
-                                <div class="flex justify-between">
-                                    <span>Lose bet: 50 pts</span>
-                                    <span class="text-yellow-400">Pending</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
-            
-                    <!-- Past Bet Results -->
-                    <section id="past-bets" class="bg-gray-800 p-4 rounded-xl shadow-lg col-span-4 col-start-5 ">
-            
-                        <ul class="space-y-2" id="past-bets-list">
-                            <li class="bg-gray-700 p-2 rounded">
-                                <div class="flex justify-between">
-                                    <span>Win bet: 75 pts</span>
-                                    <span class="text-green-400">Won: +150 pts</span>
-                                </div>
-                            </li>
-                            <li class="bg-gray-700 p-2 rounded">
-                                <div class="flex justify-between">
-                                    <span>Lose bet: 25 pts</span>
-                                    <span class="text-red-400">Lost</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </section>
+
+                        <!-- Points Bet -->
+                        <div class="col-span-1 col-start-1 row-start-3 flex flex-col items-center justify-center">
+                            <div class="rounded-lg p-2 w-full mb-1">
+                                <input
+                                    class="bg-white rounded w-full p-2 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    min="0" max="1000000" step="25" value="0" id="points_bet_1" type="number" />
+                            </div>
+                            <p class="text-sm font-medium">Points Bet</p>
+                        </div>
+
+                        <!-- Potential Winnings -->
+                        <div class="col-span-1 col-start-2 row-start-3 flex flex-col items-center justify-center">
+                            <div class=" p-2 w-full mb-1 flex justify-center">
+                                <p class="text-xl font-bold">1000</p>
+                            </div>
+                            <p class="text-sm font-medium">Potential Points</p>
+                        </div>
+
+                        <!-- Place Bet Button -->
+                        <div class="col-span-2 col-start-3 row-start-3 flex flex-col items-center justify-center">
+                            <button id="place_bet_button"
+                                class="flex flex-col items-center justify-center rounded-xl group">
+                                <img src="/public/emote_royal_hog_gold.png"
+                                    class="w-30 object-contain group-hover:animate-bounce" alt="Royal hog">
+                                <p class="text-lg font-bold mt-1">Place bet!</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- Pending Bets -->
+        <section id="pending-bets"
+            class="bg-linear-to-b  from-amber-100 to-amber-300 rounded-xl shadow-lg col-span-5 col-start-1">
+            <div class="grid grid-cols-3 grid-rows-2 border-2 rounded-2xl items-center mb-2" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-1 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-1 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class=" col-span-1 row-span-2 col-start-3 ">
+                <h2 class="text-2xl text-center">On Deck</h2>
+                    <p>Points bet: 300</p>
+                    <p>Potential Winnings: 500</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 grid-rows-2 border-2 rounded-2xl items-center mb-2" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-1 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-1 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class=" col-span-1 row-span-2 col-start-3 ">
+                    <h2 class="text-2xl text-center">Next Bet!</h2>
+                    <p>Points bet: 300</p>
+                    <p>Potential Winnings: 500</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Past Bet Results -->
+        <section id="past-bets"
+            class="bg-linear-to-b  from-amber-100 to-amber-300 p-4 rounded-xl shadow-lg col-span-3 col-start-6 row-start-2">
+            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <p class="row-span-2 col-start-4 flex items-center ">+300</p>
+            </div>
+            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <p class="row-span-2 col-start-4 flex items-center ">+300</p>
+            </div>
+            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <p class="row-span-2 col-start-4 flex items-center ">+300</p>
+            </div>
+            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1" id="past_bet_1">
+                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
+                    <img id="b1" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 1" />
+                    <img id="b2" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 2" />
+                    <img id="b3" class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
+                        alt="Crown 3" />
+                </div>
+                <p class="row-span-2 col-start-4 flex items-center ">+300</p>
+            </div>    
+        </section>
     </div>
-
     <script>
         // Your JavaScript can go here
     </script>
 </body>
+
 </html>
