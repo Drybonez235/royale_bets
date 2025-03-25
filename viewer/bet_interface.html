@@ -28,11 +28,11 @@
                 <div class="grid grid-cols-3 gap-4 items-center">
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
                         <span id="games_win_text" class="font-semibold">Wins</span>
-                        <span id="games_win_int">13</span>
+                        <span id="games_win_int">10</span>
                     </div>
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
                         <span id="games_lost_text" class="font-semibold">Losses</span>
-                        <span id="games_lost_int">8</span>
+                        <span id="games_lost_int">10</span>
                     </div>
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
                         <span id="win_loss_percentage_text" class="font-semibold">W/L</span>
@@ -133,19 +133,19 @@
                         <!-- Reset Button -->
                         <div class="col-span-1 col-start-1 row-span-2 flex flex-col justify-center items-center">
                             <button id="reset_bet_button"
-                                class="bg-rose-600 text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-red-600 transition-colors">
+                                class="bg-rose-500 text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-red-600 hover:scale-110 transition-all">
                                 Reset Bet
                             </button>
-                            <img id="bet_win_lose_img" src="/public/emote_king_thumbs_up_01.png" class="h-20 w-auto object-contain mb-2 "
+                            <img id="bet_win_lose_img" src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_cry-e3JZiU0CBMgOvmBI0bh7rCJD0aEo30.png" class="h-20 w-auto object-contain mb-2 "
                                 alt="King character">
 
                             <div class="items-center">
                                 <label class="inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer" id="bet_win_lose_toggle">
+                                    <input type="checkbox" value="checked" class="sr-only peer" id="win_lose_toggle">
                                     <div
                                         class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                                     </div>
-                                    <span id="bet_win_lose_toggle_text" class="ml-2 text-sm font-medium">Win</span>
+                                    <span id="bet_win_lose_toggle_text" class="ml-2 text-sm font-medium">Lose</span>
                                 </label>
                             </div>
                         </div>
@@ -170,15 +170,15 @@
                                     <img id="rc1"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                        alt="Red Crown 1" />
+                                        alt="Red Crown Outline" />
                                     <img id="rc2"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                        alt="Red Crown 2" />
+                                        alt="Red Crown Outline" />
                                     <img id="rc3"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                                        alt="Red Crown 3" />
+                                        alt="Red Crown Outline" />
                                 </div>
                             </div>
                         </div>
@@ -203,15 +203,15 @@
                                     <img id="bc1"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                                        alt="Blue Crown 1" />
+                                        alt="Blue Crown Outline" />
                                     <img id="bc2"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                                        alt="Blue Crown 2" />
+                                        alt="Blue Crown Outline" />
                                     <img id="bc3"
                                         class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                                        alt="Blue Crown 3" />
+                                        alt="Blue Crown Outline" />
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                         <!-- Potential Winnings -->
                         <div class="col-span-1 col-start-2 row-start-3 flex flex-col items-center justify-center">
                             <div class=" p-2 w-full mb-1 flex justify-center">
-                                <p id="bet_potential_payout_int" class="text-xl font-bold">1000</p>
+                                <p id="bet_potential_payout_int" class="text-xl font-bold">0</p>
                             </div>
                             <p class="text-sm font-medium">Potential Points</p>
                         </div>
@@ -264,13 +264,13 @@
                 <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
                     <img class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                     src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                        alt="Crown 1" />
+                        alt="Blue Crown 1" />
                     <img class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                     src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                    alt="Crown 2" />
+                    alt="Blue Crown 2" />
                     <img class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
                     src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                        alt="Crown 3" />
+                        alt="Blue Crown 3" />
                 </div>
                 <p class="row-span-2 col-start-4 flex items-center ">+300</p>
             </div>
@@ -343,9 +343,9 @@
         </section>
 
     </div>
-    <script>
-        // Your JavaScript can go here
-    </script>
+    
+       <script type="module" src="/src/bet_interface.js"></script>
+    
 </body>
 
 </html>
