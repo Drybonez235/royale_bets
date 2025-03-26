@@ -29,16 +29,13 @@
 
     <div id="ViewerScreenNameInputDiv" class="relative flex flex-col items-center mb-2">
         <!-- Player Tag Input -->
-        <input 
-            type="text" 
-            id="viewer_screen_name_input" 
-            class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
-            placeholder="Screen Name"
-        />
+        <input type="text" id="screenNameInput" placeholder="Screen name" maxlength="20" class="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500">
+        <p id="screenNameError" class="hidden">Screen name must be less than 20 characters.</p>
     </div>
 
     <div id="playerTagInputDiv" class="relative flex flex-col items-center">
         <!-- Player Tag Input -->
+        
         <input 
             type="text" 
             id="playerTagInput" 
@@ -57,44 +54,7 @@
         <a href="http://localhost:5173/viewer/bet_interface.html"><img src="/public/Chest_Overflowing_Gold_Crate.png" alt="Treasure Chest" class="w-40 transition animate-pulse"></a>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const playerTagInput = document.getElementById("playerTagInput");
-            const treasureChest = document.getElementById("treasureChest");
-            const errorMessage = document.getElementById("error-message");
-
-            playerTagInput.addEventListener("input", async function () {
-                const playerTag = playerTagInput.value.trim();
-
-                // Only proceed if input length is greater than 6
-                if (playerTag.length > 6) {
-                    try {
-                        const response = await fetch("http://localhost:3000/verify_player_tag", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ clash_id: playerTag, req_page: "player_tag_input" })
-                        });
-
-                        const isValid = await response.json();
-
-                        if (isValid) {
-                            treasureChest.classList.remove("hidden"); // Show chest
-                            errorMessage.classList.add("hidden"); // Hide error if valid
-                        } else {
-                            treasureChest.classList.add("hidden"); // Hide chest
-                            errorMessage.classList.remove("hidden"); // Show error message
-                        }
-                    } catch (error) {
-                        console.error("Error verifying player tag:", error);
-                        errorMessage.classList.remove("hidden"); // Show error on request failure
-                    }
-                } else {
-                    treasureChest.classList.add("hidden");
-                    errorMessage.classList.add("hidden"); // Hide error for short input
-                }
-            });
-        });
-    </script>
+    <script type="module" src="/src/player_tag_input.js" defer></script>
 
 </body>
 </html>
