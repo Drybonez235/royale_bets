@@ -22,33 +22,33 @@
 
         <!-- Streamer Stats (Upper Middle) -->
         <div class="col-span-3 col-start-6 row-span-1 text-black">
-            <div class="bg-linear-to-b  from-amber-100 to-amber-300 p-4 rounded-xl shadow-lg w-full ">
-                <h2 id="streamer_name" class="text-3xl font-bold mb-2">Oxalate</h2>
-                <p id="streamer_tag" class="">2VL9VP8Y0</p>
+            <div class="bg-linear-to-b  from-amber-100 to-amber-300 p-2 rounded-xl shadow-lg w-full ">
+                <h2 id="streamer_name" class="text-3xl font-bold"></h2>
+                <p id="streamer_tag" class="pl-1 pb-2"></p>
                 <div class="grid grid-cols-3 gap-4 items-center">
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
-                        <span id="games_win_text" class="font-semibold">Wins</span>
-                        <span id="games_win_int">10</span>
+                        <span id="games_win_text" class="font-semibold">Wins<br /></span>
+                        <span id="games_win_int">-</span>
                     </div>
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
-                        <span id="games_lost_text" class="font-semibold">Losses</span>
-                        <span id="games_lost_int">10</span>
+                        <span id="games_lost_text" class="font-semibold">Losses</span> 
+                        <span id="games_lost_int">-</span>
                     </div>
                     <div class="bg-amber-50 p-3 rounded-lg text-center">
-                        <span id="win_loss_percentage_text" class="font-semibold">W/L</span>
-                        <span id="win_loss_percentage_int">35%</span>
+                        <span id="win_loss_percentage_text" class="font-semibold">PCT <br /></span>
+                        <span id="win_loss_percentage_int">-</span>
                     </div>
                 </div>
-                <div class="text-center">
-                    <span id="stream_time_text" class="">Stream Time</span>
-                    <span id="stream_time_int">01:21:57</span>
+                <div class="text-center p-1">
+                    <span id="stream_time_text" class="text-lg">Stream Time:</span>
+                    <span id="stream_time_int" class="text-lg">00:00:00</span>
                 </div>
             </div>
         </div>
 
         <!-- Leaderboard (Full Height, Right Side) -->
         <section id="leaderboard_section"
-            class="col-span-4 row-span-2  p-4 rounded-xl shadow-lg bg-linear-to-b  from-amber-100 to-amber-300">
+            class="col-span-4 row-span-2  p-4 rounded-xl shadow-lg bg-linear-to-b  from-amber-100 to-amber-300 text-center">
             <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
             <div class="">
                 <table class="w-full border-collapse border-2">
@@ -114,10 +114,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="text-center text-2xl flex justify-center" id="viewer_info">
-                <span id="viewer_rank" class="p-4">25th</span>
-                <span id="viewer_username" class="p-4">Drybonez235</span>
-                <span id="viewer_current_points" class="p-4">5000</span>
+            <div class="text-2xl space-x-6 pt-2" id="viewer_info">
+                <span id="viewer_rank" class="">-</span>
+                <span id="viewer_username" class=""></span>
+                <span id="viewer_current_points" class="">5000</span>
             </div>
         </section>
 
@@ -223,15 +223,15 @@
                                     class="bg-white rounded w-full p-2 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     min="0" max="1000000" step="25" value="0" id="points_bet_input" type="number" />
                             </div>
-                            <p class="text-sm font-medium">Points Bet</p>
+                            <p class="text-lg font-medium">Points Bet</p>
                         </div>
 
                         <!-- Potential Winnings -->
                         <div class="col-span-1 col-start-2 row-start-3 flex flex-col items-center justify-center">
-                            <div class=" p-2 w-full mb-1 flex justify-center">
+                            <div class=" p-4 w-full mb-1 flex justify-center items-center">
                                 <p id="bet_potential_payout_int" class="text-xl font-bold">0</p>
                             </div>
-                            <p class="text-sm font-medium">Potential Points</p>
+                            <p class="text-lg font-medium items-center">Potential Points</p>
                         </div>
 
                         <!-- Place Bet Button -->
@@ -248,7 +248,7 @@
             </div>
         </div>
         <section id="resolved_bet_history" class=" p-4 rounded-xl  col-span-3 col-start-6 row-start-2">
-            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1" id="past_bet_1">
+            <div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1 bg-linear-to-b  from-amber-100 to-amber-300 from-40%" id="past_bet_1">
                 <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex"></img>
                 <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
                     <img class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
@@ -277,75 +277,17 @@
            
         </section>
         <!--Pending bets-->
-        <section class="col-span-6 col-start-1" id="Pending_bet_0">
-            <div class="grid grid-cols-3 grid-rows-1 border-2 rounded-2xl items-center mb-2" id="past_bet_1">
-                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 flex w-20 object-contain"></img>
-                <div class="col-span-1 col-start-2 row-span-1 row-start-1 flex">
-                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 1" />
-                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 2" />
-                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 3" />
-                </div>
-                <div class="col-span-1 col-start-2 row-span-1 row-start-2 flex">
-                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                    src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                        alt="Crown 1" />
-                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                    src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                        alt="Crown 2" />
-                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                    src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
-                        alt="Crown 3" />
-                </div>
-                <div class="col-span-3 row-span-2 col-start-3 text-center">
-                    <h2 class="text-2xl">Awaiting Results!</h2>
-                    <p>Bet: 300</p>
-                    <p>Payout: 500</p>
-                </div>
+        <section class="col-span-5 col-start-1" id="Pending_bet_0">
+            <div class="grid grid-cols-3 grid-rows-1 rounded-2xl items-center mb-2 bg-linear-to-b  from-amber-100 to-amber-300 from-40%" id="pending_bet_0_content">
+               
             </div>
         </section>
-        <section id="pending_bet_1" class="col-span-6 col-start-7">
-            <div class="grid grid-cols-3 grid-rows-1 border-2 rounded-2xl items-center mb-2" id="past_bet_1">
-                <img src="/public/emote_king_thumbs_up_01.png" class="col-span-1 row-span-2 w-20 object-contain flex"></img>
-                <div class="col-span-1 col-start-2 row-span-1 row-start-1 flex">
-                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 1" />
-                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 2" />
-                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 3" />
-                </div>
-                <div class="col-span-1 col-start-2 row-span-1 row-start-2 flex">
-                    <img id="b1" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 1" />
-                    <img id="b2" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 2" />
-                    <img id="b3" class="cursor-pointer object-contain h-10 hover:scale-110 transition-transform"
-                        src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
-                        alt="Crown 3" />
-                </div>
-                <div class=" col-span-3 row-span-2 col-start-3">
-                    <h2 class="text-2xl text-center">Next Bet!</h2>
-                    <p>Bet: 300</p>
-                    <p>Payout: 500</p>
-                </div>
+        <section id="Pending_bet_1" class="col-span-5 col-start-1">
+            <div class="grid grid-cols-3 grid-rows-1 rounded-2xl items-center mb-2 bg-linear-to-b  from-amber-100 to-amber-300 from-40%" id="pending_bet_1_content">
             </div>
         </section>
 
     </div>
-    
-       <script type="module" src="/src/bet_interface.js"></script>
-    
+    <script type="module" src="/src/bet_interface.js"></script> 
 </body>
-
 </html>
