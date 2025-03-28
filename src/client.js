@@ -4,30 +4,30 @@ import { resolved_bet } from "./html_builder";
 const battleResultsArray = [{
     "streamer_clash_tag": "#PLAYER123",
     "battle_time": 1711377015,
-    "crowns_taken_int": 3,
-    "crowns_lost_int": 1,
-    "win_lose": true
+    "crowns_taken_int": 1,
+    "crowns_lost_int": 2,
+    "win_lose": false
 },
 {
     "streamer_clash_tag": "#PLAYER456",
     "battle_time": 1711378810,
-    "crowns_taken_int": 1,
-    "crowns_lost_int": 3,
+    "crowns_taken_int": 2,
+    "crowns_lost_int": 1,
     "win_lose": true
 },
 {
     "streamer_clash_tag": "#PLAYER789",
     "battle_time": 1711382730,
-    "crowns_taken_int": 0,
-    "crowns_lost_int": 1,
-    "win_lose": false
+    "crowns_taken_int": 3,
+    "crowns_lost_int": 2,
+    "win_lose": true
 },
 {
     "streamer_clash_tag": "#PLAYER999",
     "battle_time": 1711384845,
-    "crowns_taken_int": 2,
+    "crowns_taken_int": 0,
     "crowns_lost_int": 1,
-    "win_lose": true
+    "win_lose": false
 }]; 
 
 

@@ -114,12 +114,23 @@
                     </tbody>
                 </table>
             </div>
-            <div class="text-2xl space-x-6 pt-2" id="viewer_info">
-                <span id="viewer_rank" class="">-</span>
-                <span id="viewer_username" class=""></span>
-                <span id="viewer_current_points" class="">5000</span>
-            </div>
         </section>
+
+        <div class="justify-center text-center p-4 col-span-4 row-start-3 grow-0 col-start-9 rounded-3xl text-black" id="viewer_info">
+            <div class="w-full bg-radial from-amber-50 to-amber-300 from-20% rounded-3xl">
+            <h3 id= "viewer_screen_name" class="text-xl font-bold mb-2 text-black"></h3>
+            <div class="flex justify-around text-lg font-semibol">
+                <div class="">
+                    <span class="block text-sm">Rank</span>
+                    <span id="viewer_rank" class="text-2xl text-black">25</span>
+                </div>
+                <div>
+                    <span class="block text-sm">Points</span>
+                    <span id="viewer_current_points" class="text-2xl text-black">5000</span>
+                </div>
+            </div>
+        </div>
+        </div>
 
         <!-- Betting Interface Section - Left Side -->
         <div class="col-span-5 ">
@@ -221,7 +232,7 @@
                             <div class="rounded-lg p-2 w-full mb-1">
                                 <input
                                     class="bg-white rounded w-full p-2 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    min="0" max="1000000" step="25" value="0" id="points_bet_input" type="number" />
+                                    min="1" max="1000000" step="25" value="1" id="points_bet_input" type="number" />
                             </div>
                             <p class="text-lg font-medium">Points Bet</p>
                         </div>
@@ -248,7 +259,7 @@
             </div>
         </div>
         <!--Resolved Bet History-->
-        <section id="resolved_bet_history" class=" p-4 rounded-xl  col-span-3 col-start-6 row-start-2">
+        <section id="resolved_bet_history" class=" rounded-xl  col-span-3 col-start-6 row-start-2">
         </section>
         <!--Pending bets-->
         <section id="pending_bets" class="col-span-5 col-start-1">

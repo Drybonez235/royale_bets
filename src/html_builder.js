@@ -60,15 +60,22 @@ export function resolved_bet(bet, battle_result){
     let king_img = ""
     let king_img_div
     const win_lose = bet_analyzer(bet, battle_result)
-    let point_difference = ""
-    if(win_lose){
+    const green_background = "bg-radial rounded-xl from-amber-50 to-green-600"
+    const red_background = "bg-radial rounded-xl from-amber-50 to-red-500"
+    const background = win_lose? green_background: red_background
+    let point_difference = win_lose? "+" + bet.payout : "-" + bet.points_bet
+    // if(win_lose){
+    //   point_difference = "+" + bet.payout
+    // } else {
+    //   point_difference = "-" + bet.points_bet 
+    // }
+  
+    if(bet.win_lose){
         king_img = king_thumbs_up
-        point_difference = "+" + bet.payout
-        king_img_div = `<img src="${king_img}" class="col-span-1 row-span-2 flex bg-radial rounded-xl from-amber-50 to-green-600">`
+        king_img_div = `<img src="${king_img}" class="col-span-1 row-span-2 flex ${background}">`
     } else {
         king_img = king_cry
-        point_difference = "-" + bet.points_bet
-        king_img_div = `<img src="${king_img}" class="col-span-1 row-span-2 flex bg-radial rounded-xl from-amber-50 to-red-500">`
+        king_img_div = `<img src="${king_img}" class="col-span-1 row-span-2 flex ${background}">`
     }
     const crowns_lost_img = resolved_crowns_img_builder("blue", battle_result.crowns_lost_int , bet.crowns_lost_int)
     const crowns_taken_img = resolved_crowns_img_builder("red", battle_result.crowns_taken_int, bet.crowns_taken_int)
@@ -172,6 +179,9 @@ export function resolved_crowns_img_builder(crown_color, result_crowns_int, crow
         return false;
       }
     }
-    //add_points(prediction.potential_points);
+    
+    let current_points = parseInt(document.getElementById("viewer_current_points").innerText)
+    document.getElementById("viewer_current_points").innerText = current_points + bet.payout
+    
     return true;
   }

@@ -2,45 +2,6 @@ import { pending_bet } from "./html_builder";
 import { bet } from "./royale_bets_classes"
 import {session} from "./royale_bets_classes"
 export const bet_que = []
-// export const bet_que = [{
-//   "viewer_name": "GamerX",
-//   "session_id": 1711386000,
-//   "streamer_clash_tag": "#STREAM123",
-//   "bet_time": 1711387200,
-//   "points_bet": 500,
-//   "payout": 1000,
-//   "win_lose": true,
-//   "crowns_taken": true,
-//   "crowns_lost": true,
-//   "crowns_taken_int": 3,
-//   "crowns_lost_int": 1
-// },
-// {
-//   "viewer_name": "EpicViewer99",
-//   "session_id": 1711389000,
-//   "streamer_clash_tag": "#STREAM456",
-//   "bet_time": 1711390200,
-//   "points_bet": 1200,
-//   "payout": 2500,
-//   "win_lose": true,
-//   "crowns_taken": false,
-//   "crowns_lost": false,
-//   "crowns_taken_int": 1,
-//   "crowns_lost_int": 3
-// },
-// {
-//   "viewer_name": "ClashMaster",
-//   "session_id": "1711392000",
-//   "streamer_clash_tag": "#STREAM789",
-//   "bet_time": 1711393200,
-//   "points_bet": 750,
-//   "payout": 1800,
-//   "win_lose": true,
-//   "crowns_taken": true,
-//   "crowns_lost": true,
-//   "crowns_taken_int": 2,
-//   "crowns_lost_int": 2
-// }];
 
 export const current_session = make_session()
 
@@ -48,12 +9,15 @@ export function create_bet_object(){
   const playerTag = sessionStorage.getItem("playerTag");
   const viewer_name = sessionStorage.getItem("username");
   const timestamp = sessionStorage.getItem("timestampUTC");
-  let new_bet = new bet(viewer_name, timestamp, playerTag)
   
   if(bet_que.length >= 2){
     window.alert("Sorry, you can only have 2 pending bets at a time. Wait for the current bet to be resolved.")
   } else {
+    let new_bet = new bet(viewer_name, timestamp, playerTag)
     bet_que.push(new_bet)
+    let points = parseInt(document.getElementById("viewer_current_points").innerText)
+
+    document.getElementById("viewer_current_points").innerText = points - new_bet.points_bet
     const pending_bet_html = pending_bet(new_bet)
     let child1 = document.getElementById("pending_bets")
     document.getElementById("pending_bets").appendChild(pending_bet_html, child1)
@@ -109,8 +73,9 @@ export function reset_bet(){
   bet_win_lose_img.src = "https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_cry-e3JZiU0CBMgOvmBI0bh7rCJD0aEo30.png"
   bet_win_lose_toggle_text.innerText = "Lose"
 
-  points_bet_input.value = 0
-  bet_potential_payout_int.innerHTML = 0
+  points_bet_input.value = 1
+  payout_calculator()
+  //bet_potential_payout_int.innerHTML = 0
 
  }
 
@@ -228,12 +193,18 @@ export function flip_crown(tag_id) {
 
   export function validate_bet_amount(){
     let viewer_current_points = parseInt(document.getElementById("viewer_current_points").innerText)
-    console.log(viewer_current_points)
     let bet_value = document.getElementById("points_bet_input")
     let bet_value_int = parseInt(document.getElementById("points_bet_input").value)
+
     if(bet_value_int > viewer_current_points){
       window.alert("Sorry, not enough points")
       bet_value.value = viewer_current_points
+    } else if (bet_value_int <= 0) {
+       window.alert("Sorry, your bet must be greater than 0!")
+       bet_value.value = 1
+    } else if (!Number.isInteger(bet_value_int)){
+      window.alert("Sorry, bet amount must be an integer")
+      bet_value.value = 1
     }
   }
 
@@ -243,12 +214,16 @@ export function flip_crown(tag_id) {
 
 export function make_session(){
   let current_session = new session()
+
   const streamer_name = document.getElementById("streamer_name")
   streamer_name.innerText = current_session.streamer_name
+
   const streamer_clash_tag = document.getElementById("streamer_tag")
   streamer_clash_tag.innerText = current_session.streamer_clash_tag
-  const viewer_username = document.getElementById("viewer_username")
+
+  const viewer_username = document.getElementById("viewer_screen_name")
   viewer_username.innerText = current_session.viewer_name 
+
   return current_session
 }
 
