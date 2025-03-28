@@ -17,13 +17,13 @@ export class bet {
     this.session_id = session_id
     this.streamer_clash_tag = streamer_clash_tag
     this.bet_time = utc_time_value()
-    this.points_bet = document.getElementById("points_bet_input").value
+    this.points_bet = parseInt(document.getElementById("points_bet_input").value)
     this.payout = parseInt(document.getElementById("bet_potential_payout_int").innerText)
     this.win_lose = document.getElementById("win_lose_toggle").checked ? true: false;
     this.crowns_taken = document.getElementById("crowns_taken_toggle").checked ? true: false;
     this.crowns_lost = document.getElementById("crowns_lost_toggle").checked ? true: false;
-    this.crowns_taken_int = document.getElementById("red_crowns_checked_int").value
-    this.crowns_lost_int = document.getElementById("blue_crowns_checked_int").value
+    this.crowns_taken_int = parseInt(document.getElementById("red_crowns_checked_int").value)
+    this.crowns_lost_int = parseInt(document.getElementById("blue_crowns_checked_int").value)
     }
 }
 

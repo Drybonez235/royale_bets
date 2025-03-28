@@ -1,8 +1,47 @@
 import { pending_bet } from "./html_builder";
 import { bet } from "./royale_bets_classes"
 import {session} from "./royale_bets_classes"
+export const bet_que = []
+// export const bet_que = [{
+//   "viewer_name": "GamerX",
+//   "session_id": 1711386000,
+//   "streamer_clash_tag": "#STREAM123",
+//   "bet_time": 1711387200,
+//   "points_bet": 500,
+//   "payout": 1000,
+//   "win_lose": true,
+//   "crowns_taken": true,
+//   "crowns_lost": true,
+//   "crowns_taken_int": 3,
+//   "crowns_lost_int": 1
+// },
+// {
+//   "viewer_name": "EpicViewer99",
+//   "session_id": 1711389000,
+//   "streamer_clash_tag": "#STREAM456",
+//   "bet_time": 1711390200,
+//   "points_bet": 1200,
+//   "payout": 2500,
+//   "win_lose": true,
+//   "crowns_taken": false,
+//   "crowns_lost": false,
+//   "crowns_taken_int": 1,
+//   "crowns_lost_int": 3
+// },
+// {
+//   "viewer_name": "ClashMaster",
+//   "session_id": "1711392000",
+//   "streamer_clash_tag": "#STREAM789",
+//   "bet_time": 1711393200,
+//   "points_bet": 750,
+//   "payout": 1800,
+//   "win_lose": true,
+//   "crowns_taken": true,
+//   "crowns_lost": true,
+//   "crowns_taken_int": 2,
+//   "crowns_lost_int": 2
+// }];
 
-export const bet_que = [];
 export const current_session = make_session()
 
 export function create_bet_object(){
@@ -13,21 +52,24 @@ export function create_bet_object(){
   
   if(bet_que.length >= 2){
     window.alert("Sorry, you can only have 2 pending bets at a time. Wait for the current bet to be resolved.")
-  } else if(bet_que.length == 0) {
+  } else {
     bet_que.push(new_bet)
-    const pending_bet_html = pending_bet("awaiting_results", new_bet)
-    let child1 = document.getElementById("pending_bet_0_content")
-    document.getElementById("Pending_bet_0").replaceChild(pending_bet_html, child1)
-    reset_bet()
-
-  } else if (bet_que.length == 1) {
-    bet_que.push(new_bet)
-    const pending_bet_html = pending_bet("next_bet", new_bet)
-    let child2 = document.getElementById("pending_bet_1_content")
-    document.getElementById("Pending_bet_1").replaceChild(pending_bet_html, child2)
+    const pending_bet_html = pending_bet(new_bet)
+    let child1 = document.getElementById("pending_bets")
+    document.getElementById("pending_bets").appendChild(pending_bet_html, child1)
     reset_bet()
   }
+}
 
+
+export function create_bet_result_object(bet_result_html){
+  const resolved_bet_history = document.getElementById("resolved_bet_history")//This is the space all the bets go.
+  if (resolved_bet_history.children.length <= 3){
+    resolved_bet_history.appendChild(bet_result_html)
+  } else {
+    resolved_bet_history.removeChild(resolved_bet_history.children[0])
+    resolved_bet_history.appendChild(bet_result_html)
+  }
 }
 
 document.getElementById("place_bet_button").addEventListener("click", ()=>{
@@ -130,8 +172,6 @@ export function flip_crown(tag_id) {
         current_crown.alt = "Blue Crown Outline";
         break;
 }
-    console.log(red_crown_count.value)
-    console.log(blue_crown_count.value)
   }
   document.getElementById("rc1").addEventListener("click", () => {
     flip_crown("rc1");
@@ -156,12 +196,16 @@ export function flip_crown(tag_id) {
     const bet_value = parseInt(document.getElementById("points_bet_input").value)
     const games_win_int = parseInt(document.getElementById("games_win_int").innerText)
     const games_lost_int =parseInt(document.getElementById("games_lost_int").innerText)
-    const win_pct = streamer_win_pct(games_win_int, games_lost_int)
+    const win_pct = 0//streamer_win_pct(games_win_int, games_lost_int)
     const win_lose_toggle = document.getElementById("win_lose_toggle").checked? 1:0
     const crowns_taken_toggle = document.getElementById("crowns_taken_toggle").checked? 1 : 0;
     const crowns_lost_toggle = document.getElementById("crowns_lost_toggle").checked? 1 : 0;
 
     let win_rate_multiplier = 0.0;
+
+    if (win_pct == null){
+      win_pct = 0
+    }
 
    if (win_lose_toggle == 1) {
       win_rate_multiplier = 2 - win_pct;
@@ -169,6 +213,8 @@ export function flip_crown(tag_id) {
       win_rate_multiplier = 1 + win_pct;
     }
     document.getElementById("bet_potential_payout_int").innerText = Math.round(bet_value * win_rate_multiplier * (crowns_lost_toggle + crowns_taken_toggle + 1))
+    //document.getElementById("bet_potential_payout_int").innerText = document.getElementById("bet_potential_payout_int") 
+   // console.log(value)
   }
 
   document.getElementById("betting_interface_box").addEventListener("change", () =>{
@@ -182,6 +228,7 @@ export function flip_crown(tag_id) {
 
   export function validate_bet_amount(){
     let viewer_current_points = parseInt(document.getElementById("viewer_current_points").innerText)
+    console.log(viewer_current_points)
     let bet_value = document.getElementById("points_bet_input")
     let bet_value_int = parseInt(document.getElementById("points_bet_input").value)
     if(bet_value_int > viewer_current_points){
