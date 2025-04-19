@@ -1,11 +1,11 @@
 export class session{
     constructor(){
-        this.session_id = sessionStorage.getItem("timestampUTC");
+        this.session_id = parseInt(sessionStorage.getItem("timestampUTC"));
         this.viewer_name = sessionStorage.getItem("screenName");
         this.streamer_name = sessionStorage.getItem("clash_name");
         this.streamer_clash_tag = sessionStorage.getItem("playerTag")
-        this.last_refresh_time = sessionStorage.getItem("timestampUTC");
-        this.points = document.getElementById("viewer_current_points").value
+        this.last_refresh_time = parseInt(sessionStorage.getItem("timestampUTC"));
+        this.points = parseInt(document.getElementById("viewer_current_points").innerText)
     }
 
 
@@ -33,7 +33,7 @@ export class battle_result{
         this.battle_time = battle_time
         this.crowns_taken_int = crowns_taken_int
         this.crowns_lost_int = crowns_lost_int
-        this.win_lose = win_lose(crowns_taken_int, crowns_lost_int)
+        this.win_lose = this.win_lose(crowns_taken_int, crowns_lost_int)
     }
 
     win_lose(crowns_taken_int, crowns_lost_int) {
@@ -88,5 +88,6 @@ export function utc_time_value() {
       UTC_string.slice(17, 19),
       UTC_string.slice(20, 23),
     );
-    return UTC_milli;
+    //return UTC_milli;
+    return 0
   }
