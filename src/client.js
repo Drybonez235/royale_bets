@@ -132,8 +132,7 @@ export function push_battle_results(battle_results){
 export function update_leaderboard(leaderboard){
     if (Array.isArray(leaderboard)){
         const array_length = leaderboard.length
-        
-        //THis part doesn't.
+        //Filles the leaderboard with entries.
         for (let i=0; i < array_length - 1; i++){
             const id = "leader_board_entry_" + i
             const dom_entry = document.getElementById(id)
@@ -144,11 +143,19 @@ export function update_leaderboard(leaderboard){
                 <td class="p-2">${entry["total_points"]}</td>
             `
             dom_entry.innerHTML = string
-
-            if (i == array_length - 1){
-                break
-            }
         }
+        //Fills the rest of the leaderboard with dummy values.
+        for (let i=array_length - 1; i < 10; i++){
+            const id = "leader_board_entry_" + i
+            const dom_entry = document.getElementById(id)
+            const string = `
+                <td class="p-2">${i+1}</td>
+                <td class="p-2">-</td>
+                <td class="p-2">-</td>
+            `
+            dom_entry.innerHTML = string
+        }
+
         //This part works
         const viewer_rank = document.getElementById("viewer_rank")
         viewer_rank.innerText = leaderboard[array_length - 1]["rank"]
