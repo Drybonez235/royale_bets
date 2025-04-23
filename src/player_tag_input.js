@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Save to sessionStorage
                     sessionStorage.setItem("playerTag", playerTag);
                     sessionStorage.setItem("clash_name", responseData.clash_name)
-                    sessionStorage.setItem("timestampUTC", 0) //Date.now());
+                    sessionStorage.setItem("session_id", Date.now()) //Date.now());
                 } else {
                     treasureChest.classList.add("hidden"); // Hide chest
                     errorMessage.classList.remove("hidden"); // Show error message

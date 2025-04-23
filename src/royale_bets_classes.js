@@ -1,10 +1,10 @@
 export class session{
     constructor(){
-        this.session_id = parseInt(sessionStorage.getItem("timestampUTC"));
+        this.session_id = parseInt(sessionStorage.getItem("session_id"));
         this.viewer_name = sessionStorage.getItem("screenName");
         this.streamer_name = sessionStorage.getItem("clash_name");
-        this.streamer_clash_tag = sessionStorage.getItem("playerTag")
-        this.last_refresh_time = parseInt(sessionStorage.getItem("timestampUTC"));
+        this.streamer_player_tag = sessionStorage.getItem("playerTag")
+        this.last_refresh_time = parseInt(sessionStorage.getItem("session_id"));
         this.points = parseInt(document.getElementById("viewer_current_points").innerText)
     }
 
@@ -12,10 +12,10 @@ export class session{
 }
 
 export class bet {
-    constructor(viewer_name, session_id, streamer_clash_tag){
+    constructor(viewer_name, session_id, streamer_player_tag){
     this.viewer_name = viewer_name
     this.session_id = session_id
-    this.streamer_clash_tag = streamer_clash_tag
+    this.streamer_player_tag = streamer_player_tag
     this.bet_time = utc_time_value()
     this.points_bet = parseInt(document.getElementById("points_bet_input").value)
     this.payout = parseInt(document.getElementById("bet_potential_payout_int").innerText)
@@ -28,8 +28,8 @@ export class bet {
 }
 
 export class battle_result{
-    constructor(streamer_clash_tag, battle_time, crowns_taken_int, crowns_lost_int){
-        this.streamer_clash_tag = streamer_clash_tag
+    constructor(streamer_player_tag, battle_time, crowns_taken_int, crowns_lost_int){
+        this.streamer_player_tag = streamer_player_tag
         this.battle_time = battle_time
         this.crowns_taken_int = crowns_taken_int
         this.crowns_lost_int = crowns_lost_int
@@ -48,9 +48,9 @@ export class battle_result{
 }
 
 export class streamer_stats{
-    constructor(streamer_name, streamer_clash_tag, stream_start_time, wins, losses, win_pct){
+    constructor(streamer_name, streamer_player_tag, stream_start_time, wins, losses, win_pct){
         this.streamer_name = streamer_name
-        this.streamer_clash_tag = streamer_clash_tag
+        this.streamer_player_tag = streamer_player_tag
         this.stream_start_time = stream_start_time
         this.wins = wins
         this.losses = losses
@@ -88,6 +88,5 @@ export function utc_time_value() {
       UTC_string.slice(17, 19),
       UTC_string.slice(20, 23),
     );
-    //return UTC_milli;
-    return 0
+    return UTC_milli;
   }

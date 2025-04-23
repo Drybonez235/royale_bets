@@ -219,7 +219,7 @@ export function make_session(){
   streamer_name.innerText = current_session.streamer_name
 
   const streamer_clash_tag = document.getElementById("streamer_tag")
-  streamer_clash_tag.innerText = current_session.streamer_clash_tag
+  streamer_clash_tag.innerText = current_session.streamer_player_tag
 
   const viewer_username = document.getElementById("viewer_screen_name")
   viewer_username.innerText = current_session.viewer_name 

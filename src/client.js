@@ -45,8 +45,8 @@ async function checkResolvedBets(currentSession) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 session_id: currentSession.session_id,
-                Screen_name: currentSession.viewer_name,
-                streamer_clash_tag: currentSession.streamer_clash_tag,
+                screen_name: currentSession.viewer_name,
+                streamer_player_tag: currentSession.streamer_player_tag,
                 last_refresh_time: currentSession.last_refresh_time,
                 total_points: currentSession.points
             })
@@ -55,10 +55,7 @@ async function checkResolvedBets(currentSession) {
         const data = await response.json();
 
         //The API will return pending if there are no new bets resolved.
-        if (data === "Pending") {
-            return;
-        }
-
+        console.log(data)
         const streamer_info = data["streamer_info"]
         const leaderboard = data["leaderboard"] 
         const battle_results = data["battle_results"] 
@@ -82,7 +79,7 @@ async function first_call(currentSession) {
             body: JSON.stringify({
                 session_id: currentSession.session_id,
                 screen_name: currentSession.viewer_name,
-                streamer_clash_tag: currentSession.streamer_clash_tag,
+                streamer_player_tag: currentSession.streamer_player_tag,
                 last_refresh_time: currentSession.last_refresh_time,
                 total_points: currentSession.points
             })
@@ -110,12 +107,11 @@ async function first_call(currentSession) {
     }
 }
 
-
 export function push_battle_results(battle_results){
     if (Array.isArray(battle_results)) {
         battle_results.forEach(bet => {
             const newBattle = new battle_result(
-                bet.streamer_clash_tag,
+                bet.streamer_player_tag,
                 bet.battle_time,
                 bet.crowns_taken_int,
                 bet.crowns_lost_int
@@ -175,7 +171,17 @@ export function update_streamer_info(streamer_info){
     const streamer_losses = document.getElementById("games_lost_int")
     streamer_losses.innerText = streamer_info["losses"]
 
-    sessionStorage.setItem("timestampUTC", streamer_info["streamer_last_refresh_time"])
+    const win_pct_div = document.getElementById("win_loss_percentage_int")
+
+    if (streamer_info["wins"] + streamer_info["losses"] > 0){
+    let win_pct_float = Math.ceil(100 * (streamer_info["wins"] / (streamer_info["wins"] + streamer_info["losses"])));
+    win_pct_div.innerText = win_pct_float 
+    } else {
+        win_pct_div.innerText = 50 
+    }
+
+    sessionStorage.setItem("streamer_last_refresh_time", streamer_info["streamer_last_refresh_time"])
+    sessionStorage.setItem("stream_start_time", streamer_info["stream_start_time"] )
 }
 
 export function reconcile_bet_array(){
@@ -185,7 +191,7 @@ export function reconcile_bet_array(){
         if (bet_que.length > 0){
             const bet = bet_que.shift()
             //Needs to be changed back to battle_result.battle_time - bet.bet_time >= 1
-            if (battle_result.battle_time > 1){
+            if (battle_result.battle_time > 0){
                 const resolved_bet_element = resolved_bet(bet, battle_result);
                 create_bet_result_object(resolved_bet_element);
                 update_pending_bets()
@@ -206,9 +212,10 @@ export function update_pending_bets() {
 document.addEventListener("DOMContentLoaded", function () {
     first_call(current_session);
 
-})
-//document.addEventListener("DOMContentLoaded" ,reconcile_bet_array())
-
-// Set an interval to call the function every 2 minutes and 30 seconds
-//const intervalId = setInterval(checkResolvedBets, 150000);
-//const intervalId = setInterval(reconcile_bet_array, 10000);
+    // Delay setting up the interval by 60 seconds
+    setTimeout(() => {
+        setInterval(() => {
+            checkResolvedBets(current_session);
+        }, 20000);//This should b 150000 for every two minutes and 30 seconds 
+    }, 60000);
+});
