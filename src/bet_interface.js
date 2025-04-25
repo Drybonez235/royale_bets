@@ -25,7 +25,6 @@ export function create_bet_object(){
   }
 }
 
-
 export function create_bet_result_object(bet_result_html){
   const resolved_bet_history = document.getElementById("resolved_bet_history")//This is the space all the bets go.
   if (resolved_bet_history.children.length <= 3){

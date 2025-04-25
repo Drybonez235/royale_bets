@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    sessionStorage.clear()
     const playerTagInput = document.getElementById("playerTagInput");
     const treasureChest = document.getElementById("treasureChest");
     const errorMessage = document.getElementById("error-message");
