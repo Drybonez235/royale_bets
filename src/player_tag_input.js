@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Only proceed if input length is greater than 6
         if (playerTag.length > 6) {
             try {
-                const response = await fetch("http://localhost:3000/verify_player_tag", {
+                const response = await fetch("/verify_player_tag", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ clash_id: playerTag, req_page: "player_tag_input" })

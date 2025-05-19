@@ -10,7 +10,7 @@ async function checkResolvedBets(currentSession) {
     const points = parseInt(document.getElementById("viewer_current_points").innerHTML)
 
     try {
-        const response = await fetch("http://localhost:3000/update_royale_bets", {
+        const response = await fetch("/update_royale_bets", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -41,7 +41,7 @@ async function checkResolvedBets(currentSession) {
 async function first_call(currentSession) {
     console.log("First Call Fired")
     try {
-        const response = await fetch("http://localhost:3000/start_royale_bets", {
+        const response = await fetch("/start_royale_bets", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -154,12 +154,12 @@ export function reconcile_bet_array(){
             const bet = bet_que[0]
             console.log(bet, " This was the bet")
             console.log(battle_result, " This was the battle result")
-            if ((battle_result.battle_time - bet.bet_time) >= 1){
+            if ((battle_result.battle_time - bet.bet_time) >= 300000){
                 const resolved_bet_element = resolved_bet(bet, battle_result);
                 create_bet_result_object(resolved_bet_element);
                 update_pending_bets()
                 bet_que.shift()
-                console.log("Bet Que shifted")
+                //console.log("Bet Que shifted")
             }
         }
     }
