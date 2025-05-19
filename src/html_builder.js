@@ -38,7 +38,7 @@ export function pending_bet(bet) {
               ${crowns_lost_img.join("")}
           </div>
           <div class="col-span-3 row-span-2 col-start-3 text-center">
-              <h2 class="text-2xl">Pending Bet</h2>
+              <h2 class="text-xl">Pending</h2>
               <p>Bet: ${bet.points_bet}</p>
               <p>Payout: ${bet.payout}</p>
           </div>
@@ -64,11 +64,6 @@ export function resolved_bet(bet, battle_result){
     const red_background = "bg-radial rounded-xl from-amber-50 to-red-500"
     const background = win_lose? green_background: red_background
     let point_difference = win_lose? "+" + bet.payout : "-" + bet.points_bet
-    // if(win_lose){
-    //   point_difference = "+" + bet.payout
-    // } else {
-    //   point_difference = "-" + bet.points_bet 
-    // }
   
     if(bet.win_lose){
         king_img = king_thumbs_up
@@ -81,7 +76,7 @@ export function resolved_bet(bet, battle_result){
     const crowns_taken_img = resolved_crowns_img_builder("red", battle_result.crowns_taken_int, bet.crowns_taken_int)
     //Reslved bet must be a node.
     let resolved_bet_html = document.createElement("div");
-  resolved_bet_html.innerHTML = `<div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1 p-1 justify-center" id="past_bet_1">
+  resolved_bet_html.innerHTML = `<div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1 p-1 justify-center bg-gradient-to-b from-amber-100 to-amber-300 from-40%" id="past_bet_1">
         ${king_img_div}
         <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
              ${crowns_taken_img}
@@ -89,7 +84,7 @@ export function resolved_bet(bet, battle_result){
         <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
             ${crowns_lost_img}
         </div>
-        <p class="row-span-2 col-start-4 flex items-center ">${point_difference}</p>
+        <p class="row-span-2 col-start-4 flex items-center text-2xl pr-2">${point_difference}</p>
     </div>`
     return resolved_bet_html
 }

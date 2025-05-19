@@ -36,7 +36,11 @@ export function create_bet_result_object(bet_result_html){
 }
 
 document.getElementById("place_bet_button").addEventListener("click", ()=>{
-  create_bet_object();
+  const bool = validate_bet_amount() 
+  if(bool){create_bet_object();
+    checkAndEnableBetting();
+  }
+
 });
 
 export function reset_bet(){
@@ -72,7 +76,7 @@ export function reset_bet(){
   bet_win_lose_img.src = "https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_cry-e3JZiU0CBMgOvmBI0bh7rCJD0aEo30.png"
   bet_win_lose_toggle_text.innerText = "Lose"
 
-  points_bet_input.value = 1
+  points_bet_input.value = 0
   payout_calculator()
   //bet_potential_payout_int.innerHTML = 0
 
@@ -198,13 +202,17 @@ export function flip_crown(tag_id) {
     if(bet_value_int > viewer_current_points){
       window.alert("Sorry, not enough points")
       bet_value.value = viewer_current_points
+      return false
     } else if (bet_value_int <= 0) {
        window.alert("Sorry, your bet must be greater than 0!")
-       bet_value.value = 1
+       bet_value.value = 0
+       return false
     } else if (!Number.isInteger(bet_value_int)){
       window.alert("Sorry, bet amount must be an integer")
-      bet_value.value = 1
+      bet_value.value = 0
+      return false
     }
+    return true
   }
 
   document.getElementById("points_bet_input").addEventListener("change", () =>{
@@ -226,3 +234,62 @@ export function make_session(){
   return current_session
 }
 
+let countdownInterval; // Variable to hold the interval timer
+const betCooldownDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
+const betCountdownDisplay = document.getElementById('bet_countdown_display');
+
+function updateCountdownDisplay(milliseconds) {
+
+  const minutes = Math.floor(milliseconds / 60000);
+  const seconds = Math.floor((milliseconds % 60000) / 1000);
+
+  const formattedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`;
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+  betCountdownDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+
+  if (milliseconds === 0){
+    betCountdownDisplay.textContent = ``; 
+  }
+
+}
+
+function startCountdown(endTime) {
+  // Clear any existing interval
+
+  if (countdownInterval !== null) {
+    clearInterval(countdownInterval);
+  }
+  
+  countdownInterval = setInterval(() => {
+      const now = Date.now();
+      const timeRemaining = endTime - now;
+
+      if (timeRemaining <= 0) {
+          updateCountdownDisplay(0);
+          checkAndEnableBetting(); // Check if a new bet is waiting
+      } else {
+          updateCountdownDisplay(timeRemaining);
+      }
+  }, 1000); // Update every 1 second
+}
+
+export function checkAndEnableBetting() {
+  if (bet_que.length > 0) {
+      // Assuming the latest bet's timestamp determines the cooldown
+      const lastBetTime = bet_que[0].bet_time; // Adjust this to get the correct timestamp
+      const cooldownEndTime = lastBetTime + betCooldownDuration;
+
+      if (Date.now() >= cooldownEndTime) {
+           // There's a bet, and the cooldown has passed
+          document.getElementById('bet_countdown_label').textContent = "Next Bet Available In:"; // Reset label if changed
+      } else {
+          startCountdown(cooldownEndTime);
+      }
+  } else {
+      // No bets in the array, betting should be allowed (or perhaps not depending on your logic)
+      betCountdownDisplay.textContent = "Ready to bet!";
+       // placeBetButton.disabled = false; // Example
+      document.getElementById('bet_countdown_label').textContent = "Next Bet Available In:"; // Reset label if changed
+  }
+}

@@ -10,263 +10,257 @@
 
 <body class="min-h-screen bg-gray-900 text-black flex flex-col" style="background-image: url('/public/cloudsbg.png');">
 
-    <!-- Main Container (Grid Layout) -->
-    <div class="container mx-auto p-4 grid grid-cols-12 gap-4 h-full">
+    <!-- Main Container (Flex Layout for better responsiveness) -->
+    <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
 
         <!-- Logo (Upper Left) -->
-        <div class="col-span-4 row-span-1 flex items-center">
+        <div class="col-span-1 md:col-span-4 items-center">
             <a href="http://localhost:5173">
-                <img src="/public/rblogo2.png" alt="Logo" class="w-60 object-contain">
+                <img src="/public/rblogo2.png" alt="Logo" class="w-32 md:w-60 object-contain">
             </a>
         </div>
 
         <!-- Streamer Stats (Upper Middle) -->
-        <div class="col-span-3 col-start-6 row-span-1 text-black">
-            <div class="bg-linear-to-b  from-amber-100 to-amber-300 p-2 rounded-xl shadow-lg w-full ">
-                <h2 id="streamer_name" class="text-3xl font-bold"></h2>
+        <div class="col-span-1 md:col-span-4 lg:col-span-3 lg:col-start-6 text-black">
+            <div class="bg-gradient-to-b from-amber-100 to-amber-300 p-2 rounded-xl shadow-lg w-full">
+                <h2 id="streamer_name" class="text-sm overflow-auto  md:text-lg lg:text-3xl font-bold"></h2>
                 <p id="streamer_tag" class="pl-1 pb-2"></p>
-                <div class="grid grid-cols-3 gap-4 items-center">
-                    <div class="bg-amber-50 p-3 rounded-lg text-center">
+                <div class="grid grid-cols-3 gap-2 items-center text-sm md:text-base">
+                    <div class="bg-amber-50 p-2 rounded-lg text-center">
                         <span id="games_win_text" class="font-semibold">Wins<br /></span>
                         <span id="games_win_int">-</span>
                     </div>
-                    <div class="bg-amber-50 p-3 rounded-lg text-center">
-                        <span id="games_lost_text" class="font-semibold">Losses</span> 
+                    <div class="bg-amber-50 p-2 rounded-lg text-center">
+                        <span id="games_lost_text" class="font-semibold">Losses<br /></span>
                         <span id="games_lost_int">-</span>
                     </div>
-                    <div class="bg-amber-50 p-3 rounded-lg text-center">
+                    <div class="bg-amber-50 p-2 rounded-lg text-center">
                         <span id="win_loss_percentage_text" class="font-semibold">PCT <br /></span>
                         <span id="win_loss_percentage_int">-</span><span>%</span>
                     </div>
                 </div>
-                <div class="text-center p-1">
-                    <span id="stream_time_text" class="text-lg">Stream Time:</span>
-                    <span id="stream_time_int" class="text-lg">00:00:00</span>
-                </div>
             </div>
         </div>
 
-        <!-- Leaderboard (Full Height, Right Side) -->
+        <!-- Leaderboard (Right Side) -->
         <section id="leaderboard_section"
-            class="col-span-4 row-span-2  p-4 rounded-xl shadow-lg bg-linear-to-b  from-amber-100 to-amber-300 text-center">
-            <h2 class="text-2xl font-bold mb-4 text-center">Leaderboard</h2>
-            <div class="">
-                <table class="w-full border-collapse border-2">
+            class=" hidden sm:hidden md:hidden lg:block md:col-span-4 xl:col-span-4 md:row-span-2 md:col-start-9 p-4 rounded-xl shadow-lg bg-gradient-to-b from-amber-100 to-amber-300 text-center">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">Leaderboard</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border-2 text-sm md:text-base">
                     <thead>
                         <tr class="bg-black text-white">
-                            <th class="p-2 text-center">Rank</th>
-                            <th class="p-2 text-center">Screen Name</th>
-                            <th class="p-2 text-center">Total Points</th>
+                            <th class="p-1 md:p-2 text-center">Rank</th>
+                            <th class="p-1 md:p-2 text-center">Screen Name</th>
+                            <th class="p-1 md:p-2 text-center">Total Points</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboard_body">
-                        <tr class="bg-amber-100 text-center" id="leader_board_entry_0">
-                            <td class="p-2">2</td>
-                            <td class="p-2">RoyalBetsKing</td>
-                            <td class="p-2">14,980</td>
+                        <tr id="leader_board_entry_0" class="bg-amber-100 text-center">
+                            <td class="p-1 md:p-2">1</td>
+                            <td class="p-1 md:p-2">ShadowKnight</td>
+                            <td class="p-1 md:p-2">15,320</td>
                         </tr>
-                        <!-- More leaderboard entries -->
-                        <tr class="bg-amber-50 text-center" id="leader_board_entry_1">
-                            <td class="p-2">3</td>
-                            <td class="p-2">GamerPro99</td>
-                            <td class="p-2">12,450</td>
+                        <tr  id="leader_board_entry_1" class="bg-amber-50 text-center">
+                            <td class="p-1 md:p-2">2</td>
+                            <td class="p-1 md:p-2">RoyalBetsKing</td>
+                            <td class="p-1 md:p-2">14,980</td>
                         </tr>
-                        <tr class="bg-amber-100 text-center" id="leader_board_entry_2">
-                            <td class="p-2">4</td>
-                            <td class="p-2">BetMaster</td>
-                            <td class="p-2">11,875</td>
+                        <tr id="leader_board_entry_2" class="bg-amber-100 text-center">
+                            <td class="p-1 md:p-2">3</td>
+                            <td class="p-1 md:p-2">GamerPro99</td>
+                            <td class="p-1 md:p-2">12,450</td>
                         </tr>
-                        <tr class="bg-amber-50 text-center"  id="leader_board_entry_3">
-                            <td class="p-2">5</td>
-                            <td class="p-2">LuckyStriker</td>
-                            <td class="p-2">10,320</td>
+                        <tr id="leader_board_entry_3" class="bg-amber-50 text-center">
+                            <td class="p-1 md:p-2">4</td>
+                            <td class="p-1 md:p-2">BetMaster</td>
+                            <td class="p-1 md:p-2">11,875</td>
                         </tr>
-                        <tr class="bg-amber-100 text-center"  id="leader_board_entry_4">
-                            <td class="p-2">1</td>
-                            <td class="p-2">ShadowKnight</td>
-                            <td class="p-2">15,320</td>
+                        <tr id="leader_board_entry_4" class="bg-amber-100 text-center">
+                            <td class="p-1 md:p-2">5</td>
+                            <td class="p-1 md:p-2">LuckyStriker</td>
+                            <td class="p-1 md:p-2">10,320</td>
                         </tr>
-                        <tr class="bg-amber-50 text-center"  id="leader_board_entry_5">
-                            <td class="p-2">5</td>
-                            <td class="p-2">LuckyStriker</td>
-                            <td class="p-2">10,320</td>
+                        <tr id="leader_board_entry_5" class="bg-amber-50 text-center">
+                            <td class="p-1 md:p-2">6</td>
+                            <td class="p-1 md:p-2">GameChampion</td>
+                            <td class="p-1 md:p-2">9,850</td>
                         </tr>
-                        <tr class="bg-amber-100 text-center"  id="leader_board_entry_6">
-                            <td class="p-2">1</td>
-                            <td class="p-2">ShadowKnight</td>
-                            <td class="p-2">15,320</td>
+                        <tr id="leader_board_entry_6" class="bg-amber-100 text-center">
+                            <td class="p-1 md:p-2">7</td>
+                            <td class="p-1 md:p-2">ProGamerX</td>
+                            <td class="p-1 md:p-2">8,740</td>
                         </tr>
-                        <tr class="bg-amber-50 text-center"  id="leader_board_entry_7">
-                            <td class="p-2">5</td>
-                            <td class="p-2">LuckyStriker</td>
-                            <td class="p-2">10,320</td>
+                        <tr id="leader_board_entry_7" class="bg-amber-50 text-center">
+                            <td class="p-1 md:p-2">8</td>
+                            <td class="p-1 md:p-2">VictoryQueen</td>
+                            <td class="p-1 md:p-2">7,600</td>
                         </tr>
-                        <tr class="bg-amber-100 text-center"  id="leader_board_entry_8">
-                            <td class="p-2">1</td>
-                            <td class="p-2">ShadowKnight</td>
-                            <td class="p-2">15,320</td>
+                        <tr id="leader_board_entry_8" class="bg-amber-100 text-center">
+                            <td class="p-1 md:p-2">9</td>
+                            <td class="p-1 md:p-2">BetWizard</td>
+                            <td class="p-1 md:p-2">6,950</td>
                         </tr>
-                        <tr class="bg-amber-50 text-center"  id="leader_board_entry_9">
-                            <td class="p-2">5</td>
-                            <td class="p-2">LuckyStriker</td>
-                            <td class="p-2">10,320</td>
+                        <tr id="leader_board_entry_9" class="bg-amber-50 text-center">
+                            <td class="p-1 md:p-2">10</td>
+                            <td class="p-1 md:p-2">GameMaster42</td>
+                            <td class="p-1 md:p-2">5,870</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <div class="justify-center text-center p-4 col-span-4 row-start-3 grow-0 col-start-9 rounded-3xl text-black" id="viewer_info">
-            <div class="w-full bg-radial from-amber-50 to-amber-300 from-20% rounded-3xl">
-            <h3 id= "viewer_screen_name" class="text-xl font-bold mb-2 text-black"></h3>
-            <div class="flex justify-around text-lg font-semibol">
-                <div class="">
-                    <span class="block text-sm">Rank</span>
-                    <span id="viewer_rank" class="text-2xl text-black">25</span>
-                </div>
-                <div>
-                    <span class="block text-sm">Points</span>
-                    <span id="viewer_current_points" class="text-2xl text-black">5000</span>
-                </div>
-            </div>
-        </div>
-        </div>
+        <!-- Betting Interface Section - Main Area -->
+        <div class="col-span-1 row-start-3 md:col-span-8 lg:col-span-5 lg:row-start-2">
+            <div class="bg-gradient-to-b from-amber-100 to-amber-300 from-40% text-black rounded-xl shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 rounded-xl p-4" id="betting_interface_box">
+                    
+                    <!-- Reset Button -->
+                    <div class="md:col-span-1 flex flex-col space-y-4">
+                        <button id="reset_bet_button"
+                            class="bg-rose-500 text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-red-600 hover:scale-110 transition-all">
+                            Reset Bet
+                        </button>
+                    </div>
 
-        <!-- Betting Interface Section - Left Side -->
-        <div class="col-span-5 ">
-
-            <div class="grid grid-cols-4 gap-2 justify-center" id="betting_interface">
-                <!-- Bet Placement -->
-                <div class="bg-linear-to-b  from-amber-100 to-amber-300 from-40% text-black col-span-4 rounded-xl shadow-md "
-                    id="betting_interface_box">
-
-                    <div class="grid grid-cols-3 gap-2 border-2 rounded-xl p-1" id="grid_stuff">
-                        <!-- Reset Button -->
-                        <div class="col-span-1 col-start-1 row-span-2 flex flex-col justify-center items-center">
-                            <button id="reset_bet_button"
-                                class="bg-rose-500 text-white rounded-full px-4 py-2 text-sm font-medium hover:bg-red-600 hover:scale-110 transition-all">
-                                Reset Bet
-                            </button>
-                            <img id="bet_win_lose_img" src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_cry-e3JZiU0CBMgOvmBI0bh7rCJD0aEo30.png" class="h-20 w-auto object-contain mb-2 "
-                                alt="King character">
-
-                            <div class="items-center">
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" value="checked" class="sr-only peer" id="win_lose_toggle">
-                                    <div
-                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-                                    </div>
-                                    <span id="bet_win_lose_toggle_text" class="ml-2 text-sm font-medium">Lose</span>
-                                </label>
+                    <!-- Crown Options Column -->
+                    <div class="md:col-span-2 flex flex-col justify-center space-y-2">
+                        
+                    <div class="items-center bg-amber-50 rounded-lg space-x-2 flex pl-3">
+                        <label class="items-center cursor-pointer inline-flex">
+                            <input type="checkbox" value="checked" class="sr-only peer" id="win_lose_toggle">
+                            <div
+                                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                             </div>
-                        </div>
-
-
+                            <span id="bet_win_lose_toggle_text" class="ml-2 text-sm font-medium">Lose</span>
+                        </label>
+                        <img id="bet_win_lose_img" src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_cry-e3JZiU0CBMgOvmBI0bh7rCJD0aEo30.png" 
+                            class="h-16 w-auto object-contain ml-auto mr-8 pb-2" alt="King character"> 
+                    </div> 
+                        
                         <!-- Crowns Taken Row -->
-                        <div class="col-span-2 col-start-2 space-x-4 flex items-center bg-amber-50 rounded-lg p-3"
-                            id="crowns_taken_row">
-                            <!-- Toggle Switch -->
+                        <div class="flex items-center space-x-2 bg-amber-50 rounded-lg p-3">
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" id="crowns_taken_toggle">
                                 <div
                                     class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                                 </div>
-                                <span class="ml-2 text-sm font-medium">Crowns Taken</span>
+                                <span class="ml-2">Crowns Taken</span>
                             </label>
-
-                            <!-- Crown Images -->
-                            <div class="flex items-center" id="crowns_taken_div">
+                            <div class="flex items-center space-x-2 ml-auto">
                                 <input class="hidden" id="red_crowns_checked_int" type="number" value="0" step="1" />
                                 <div class="flex space-x-1">
                                     <img id="rc1"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
                                         alt="Red Crown Outline" />
                                     <img id="rc2"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
                                         alt="Red Crown Outline" />
                                     <img id="rc3"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_red_outline-z7uto1UUrra0poesKhuWr2Dwg4ie5a.png"
                                         alt="Red Crown Outline" />
                                 </div>
                             </div>
                         </div>
 
-
                         <!-- Crowns Lost Row -->
-                        <div class="col-span-2 col-start-2 row-start-2 flex items-center space-x-4 bg-amber-50 rounded-lg p-4"
-                            id="crowns_lost_row">
-                            <!-- Toggle Switch -->
+                        <div class="flex items-center space-x-2 bg-amber-50 rounded-lg p-3">
                             <label class="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" class="sr-only peer" id="crowns_lost_toggle">
                                 <div
                                     class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                                 </div>
-                                <span class="ml-2 text-sm font-medium">Crowns Lost</span>
+                                <span class="ml-2">Crowns Lost</span>
                             </label>
-
-                            <!-- Crown Images -->
-                            <div class="flex items-center" id="crowns_lost_div">
+                            <div class="flex items-center space-x-1 ml-auto">
                                 <input class="hidden" id="blue_crowns_checked_int" type="number" value="0" step="1" />
                                 <div class="flex space-x-1">
                                     <img id="bc1"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
                                         alt="Blue Crown Outline" />
                                     <img id="bc2"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
                                         alt="Blue Crown Outline" />
                                     <img id="bc3"
-                                        class="cursor-pointer object-contain h-8 hover:scale-110 transition-transform"
+                                        class="cursor-pointer object-contain h-7 md:h-6 xl:h-7 hover:scale-110 transition-transform"
                                         src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/crown_blue_outline-DTdoXK6tHNg2IIosnhUt6rqJEWSG6U.png"
                                         alt="Blue Crown Outline" />
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Points Bet -->
-                        <div class="col-span-1 col-start-1 row-start-3 flex flex-col items-center justify-center">
-                            <div class="rounded-lg p-2 w-full mb-1">
+                    <!-- Points Bet Row (Full Width) -->
+                    <div class="md:col-span-3 grid grid-cols-3 gap-4 items-center">
+                        <!-- Points Input -->
+                        <div class="flex flex-col items-center">
+                            <div class="rounded-lg p-2 w-full">
                                 <input
-                                    class="bg-white rounded w-full p-2 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    min="1" max="1000000" step="25" value="1" id="points_bet_input" type="number" />
+                                    class="bg-white rounded w-full p-2 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
+                                    min="0" max="1000000" step="250" value="0" id="points_bet_input" type="number" />
                             </div>
-                            <p class="text-lg font-medium">Points Bet</p>
+                            <p class="text-sm font-medium mt-1">Points Bet</p>
                         </div>
 
                         <!-- Potential Winnings -->
-                        <div class="col-span-1 col-start-2 row-start-3 flex flex-col items-center justify-center">
-                            <div class=" p-4 w-full mb-1 flex justify-center items-center">
+                        <div class="flex flex-col items-center">
+                            <div class="p-2 w-full flex justify-center items-center">
                                 <p id="bet_potential_payout_int" class="text-xl font-bold">0</p>
                             </div>
-                            <p class="text-lg font-medium items-center">Potential Points</p>
+                            <p class="text-sm font-medium">Potential Points</p>
                         </div>
 
                         <!-- Place Bet Button -->
-                        <div class="col-span-2 col-start-3 row-start-3 flex flex-col items-center justify-center">
-                            <button id="place_bet_button"
-                                class="flex flex-col items-center justify-center rounded-xl group">
-                                <img src="/public/emote_royal_hog_gold.png"
-                                    class="w-30 object-contain group-hover:animate-bounce" alt="Royal hog">
-                                <p class="text-lg font-bold mt-1">Place bet!</p>
+                        <div class="flex flex-col items-center justify-center">
+                            <button id="place_bet_button" class="flex flex-col items-center justify-center rounded-xl group">
+                                <img src="/public/emote_royal_hog_gold.png" class="w-16 md:w-20 object-contain group-hover:animate-bounce" alt="Royal hog">
+                                <p class="text-base font-bold mt-1">Place bet!</p>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Resolved Bet History-->
-        <section id="resolved_bet_history" class=" rounded-xl  col-span-3 col-start-6 row-start-2">
+
+        <!-- Viewer Info (Bottom Right) -->
+        <div class="col-span-1 row-start-2 md:row-start-1 md:col-start-9 md:col-span-4 xl:col-start-9 xl:row-start-3" id="viewer_info">
+            <div class="w-full bg-gradient-to-b from-amber-100 to-amber-300 rounded-xl p-3">
+                <h3 id="viewer_screen_name" class="text-2xl md:text-3xl font-bold text-black text-center md:text-left"></h3>
+                <div id="bet_countdown_container" class="text-center md:text-left">
+                    <span id="bet_countdown_label" class="block text-base">NEXT BET VALID:
+                    <span id="bet_countdown_display" class="text-base text-black">5:00</span></span>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 mt-2">
+                    <div class="bg-amber-50 rounded-lg p-2 text-center flex-1 md:w-1/4">
+                        <span class="block text-sm font-semibold">Rank</span>
+                        <span id="viewer_rank" class="text-xl text-black">25</span>
+                    </div>
+                    <div class="bg-amber-50 rounded-lg p-2 text-center flex-1 md:w-3/4">
+                        <span class="block text-sm font-semibold">Points</span>
+                        <span id="viewer_current_points" class="text-xl text-black">5000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resolved Bet History -->
+        <section id="resolved_bet_history" class="hidden sm:block col-span-1 md:col-span-3 md:col-start-6 md:row-start-2">
+            <!-- Content for resolved bet history -->
         </section>
-        <!--Pending bets-->
-        <section id="pending_bets" class="col-span-5 col-start-1">
+
+        <!-- Pending Bets -->
+        <section id="pending_bets" class="col-span-1 row-start-6 md:col-span-8 lg:col-span-5 md:row-start-4 lg:row-start-3">
+            <!-- Content for pending bets -->
         </section>
 
     </div>
-    <script type="module" src="/src/bet_interface.js"></script> 
+    <script type="module" src="/src/bet_interface.js"></script>
     <script type="module" src="/src/client.js"></script>
 </body>
 </html>

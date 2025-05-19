@@ -1,4 +1,4 @@
-import { bet_que, create_bet_result_object, current_session } from "./bet_interface";
+import { bet_que, create_bet_result_object, current_session, checkAndEnableBetting } from "./bet_interface";
 import { resolved_bet } from "./html_builder";
 import { battle_result, utc_time_value } from "./royale_bets_classes";
 
@@ -11,7 +11,7 @@ async function checkResolvedBets(currentSession) {
 
     try {
         const response = await fetch("http://localhost:3000/update_royale_bets", {
-            method: "POST", // Ensure API expects POST
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 session_id: currentSession.session_id,
@@ -30,6 +30,7 @@ async function checkResolvedBets(currentSession) {
         push_battle_results(battle_results)
         update_leaderboard(leaderboard)
         update_streamer_info(streamer_info)
+        checkAndEnableBetting()
 
     
     } catch (error) {
@@ -41,7 +42,7 @@ async function first_call(currentSession) {
     console.log("First Call Fired")
     try {
         const response = await fetch("http://localhost:3000/start_royale_bets", {
-            method: "POST", // Ensure API expects POST
+            method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 session_id: currentSession.session_id,
@@ -51,6 +52,8 @@ async function first_call(currentSession) {
                 total_points: currentSession.points
             })
         });
+
+        
 
         const data = await response.json();
 
