@@ -76,7 +76,7 @@ export function resolved_bet(bet, battle_result){
     const crowns_taken_img = resolved_crowns_img_builder("red", battle_result.crowns_taken_int, bet.crowns_taken_int)
     //Reslved bet must be a node.
     let resolved_bet_html = document.createElement("div");
-  resolved_bet_html.innerHTML = `<div class="grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1 p-1 justify-center bg-gradient-to-b from-amber-100 to-amber-300 from-40%" id="past_bet_1">
+  resolved_bet_html.innerHTML = `<div class="hidden md:grid grid-cols-4 grid-rows-2 border-2 rounded-2xl my-1 p-1 justify-center bg-gradient-to-b from-amber-100 to-amber-300 from-40%" id="past_bet_1">
         ${king_img_div}
         <div class="col-span-2 col-start-2 row-span-1 row-start-1 flex">
              ${crowns_taken_img}
@@ -84,7 +84,7 @@ export function resolved_bet(bet, battle_result){
         <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
             ${crowns_lost_img}
         </div>
-        <p class="row-span-2 col-start-4 flex items-center text-2xl pr-2">${point_difference}</p>
+        <p class="row-span-2 col-start-4 flex items-center text-sm md:text-xl lg:text-2xl pr-2">${point_difference}</p>
     </div>`
     return resolved_bet_html
 }
