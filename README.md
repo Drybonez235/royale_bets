@@ -38,6 +38,6 @@ This project was built from scratch without any front-end frameworks for maximum
 ### Installation
 ```bash
 git clone https://github.com/Drybonez235/royale_bets.git
-cd royale-bets
+cd royale_bets
 npm install
 npm run dev
