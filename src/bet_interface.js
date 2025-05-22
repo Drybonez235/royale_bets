@@ -37,7 +37,8 @@ export function create_bet_result_object(bet_result_html){
 
 document.getElementById("place_bet_button").addEventListener("click", ()=>{
   const bool = validate_bet_amount() 
-  if(bool){create_bet_object();
+  if(bool){
+    create_bet_object();
     checkAndEnableBetting();
   }
 
@@ -161,9 +162,16 @@ export function flip_crown(tag_id) {
   });
 
   export function payout_calculator(){
-    const bet_value = parseInt(document.getElementById("points_bet_input").value)
-    const games_win_int = parseInt(document.getElementById("games_win_int").innerText)
-    const games_lost_int =parseInt(document.getElementById("games_lost_int").innerText)
+  let bet_value = parseInt(document.getElementById("points_bet_input").value);
+  if (isNaN(bet_value)) bet_value = 0;
+
+  let games_win_int = parseInt(document.getElementById("games_win_int").innerText);
+  if (isNaN(games_win_int)) games_win_int = 0;
+
+  let games_lost_int = parseInt(document.getElementById("games_lost_int").innerText);
+  if (isNaN(games_lost_int)) games_lost_int = 0;
+
+
     const win_pct = streamer_win_pct(games_win_int, games_lost_int)
     const win_lose_toggle = document.getElementById("win_lose_toggle").checked? 1:0
     const crowns_taken_toggle = document.getElementById("crowns_taken_toggle").checked? 1 : 0;
@@ -188,6 +196,8 @@ export function flip_crown(tag_id) {
   });
 
   export function streamer_win_pct(wins, losses){
+    const totalGames = wins + losses;
+    if (totalGames === 0) return .5;
     let pct = (wins / (wins + losses))
     return pct
   }
@@ -214,7 +224,12 @@ export function flip_crown(tag_id) {
   }
 
   document.getElementById("points_bet_input").addEventListener("change", () =>{
-     validate_bet_amount();
+    let bet_value = document.getElementById("points_bet_input")
+    let bet_value_int = parseInt(document.getElementById("points_bet_input").value)
+    if (bet_value_int === 0){
+      return
+    }
+    validate_bet_amount();
     });
 
 export function make_session(){
