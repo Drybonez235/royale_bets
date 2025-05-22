@@ -84,7 +84,7 @@ export function resolved_bet(bet, battle_result){
         <div class="col-span-2 col-start-2 row-span-1 row-start-2 flex">
             ${crowns_lost_img}
         </div>
-        <p class="row-span-2 col-start-4 flex items-center text-sm md:text-xl lg:text-2xl pr-2">${point_difference}</p>
+        <p class="hidden row-span-2 col-start-4 md:flex items-center md:text-sm lg:text-lg pr-2">${point_difference}</p>
     </div>`
     return resolved_bet_html
 }

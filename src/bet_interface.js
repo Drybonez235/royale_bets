@@ -164,7 +164,7 @@ export function flip_crown(tag_id) {
     const bet_value = parseInt(document.getElementById("points_bet_input").value)
     const games_win_int = parseInt(document.getElementById("games_win_int").innerText)
     const games_lost_int =parseInt(document.getElementById("games_lost_int").innerText)
-    const win_pct = 0//streamer_win_pct(games_win_int, games_lost_int)
+    const win_pct = streamer_win_pct(games_win_int, games_lost_int)
     const win_lose_toggle = document.getElementById("win_lose_toggle").checked? 1:0
     const crowns_taken_toggle = document.getElementById("crowns_taken_toggle").checked? 1 : 0;
     const crowns_lost_toggle = document.getElementById("crowns_lost_toggle").checked? 1 : 0;

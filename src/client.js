@@ -144,7 +144,8 @@ export function reconcile_bet_array(){
         //This needs to be change back to a while loop.
         if (bet_que.length > 0){
             const bet = bet_que[0]
-            if ((battle_result.battle_time - bet.bet_time) >= 300000){
+            //This needs to be changed back to 300000
+            if ((battle_result.battle_time - bet.bet_time) >= 1){
                 const resolved_bet_element = resolved_bet(bet, battle_result);
                 create_bet_result_object(resolved_bet_element);
                 update_pending_bets()
