@@ -24,6 +24,33 @@ export default defineConfig({
     port: 3000,
     open: true, // Set to true if you want the browser to open on `npm run dev`
     strictPort: true, // Fail if 3000 is in use
+    proxy: {
+        '/redirect': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+        '/subscription_handler': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+        '/receive_twitch_event': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+        '/verify_player_tag': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+        '/start_royale_bets': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+        '/update_royale_bets': {
+          target: 'http://localhost:5318',
+          changeOrigin: true,
+        },
+      }
   },
 
 })
+//This is a test to see if I am in the bug branch.
