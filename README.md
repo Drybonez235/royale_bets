@@ -1,24 +1,24 @@
-# 👑 Royale Bets
+# Royale Bets
 
 **Royale Bets** is an interactive prediction platform for **Clash Royale** streams. Watch your favorite streamers play live and bet on their performance in real time!
 
-🌐 Live now at: [royalebets.win](https://royalebets.win)
+Live now at: [royalebets.win](https://royalebets.win)
 
 ---
 
-## 🎮 What is Royale Bets?
+## What is Royale Bets?
 
 Royale Bets lets viewers engage with live Clash Royale content in a fun, competitive way:
 
 While you **Watch Streamers** play live on Youtube or Twitch yout can:
-- 🧠 **Predict Outcomes** such as:
+- **Predict Outcomes** such as:
   - Will the streamer win the match?
   - How many crowns will they secure?
-- 💰 **Earn Points** for accurate predictions (future update ideas: leaderboards, rewards, etc.).
+- **Earn Points** for accurate predictions (future update ideas: leaderboards, rewards, etc.).
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **HTML**
 - **JavaScript**
@@ -29,7 +29,7 @@ This project was built from scratch without any front-end frameworks for maximum
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v14+)
@@ -37,7 +37,7 @@ This project was built from scratch without any front-end frameworks for maximum
 
 ### Installation
 ```bash
-git clone https://github.com/your-username/royale-bets.git
+git clone https://github.com/Drybonez235/royale_bets.git
 cd royale-bets
 npm install
 npm run dev
