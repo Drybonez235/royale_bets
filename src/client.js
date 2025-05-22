@@ -39,7 +39,6 @@ async function checkResolvedBets(currentSession) {
 }
 
 async function first_call(currentSession) {
-    console.log("First Call Fired")
     try {
         const response = await fetch("/start_royale_bets", {
             method: "POST",
@@ -79,7 +78,6 @@ export function push_battle_results(battle_results){
                 br.crowns_taken_int,
                 br.crowns_lost_int
             );
-        console.log(newBattle, " This is the newBattle")
         battleResultsArray.push(newBattle)
         }
         //Here  we need to call a function that then takes all the bets in the resolved bet array, and then resolves the bets in the bets array.
@@ -117,14 +115,10 @@ export function update_leaderboard(leaderboard){
         const viewer_rank = document.getElementById("viewer_rank")
         viewer_rank.innerText = leaderboard[array_length - 1]["rank"]
     } else {
-        console.warn("Unexpected API response format:", battle_result);
     }
 }
 
 export function update_streamer_info(streamer_info){
-    console.log(streamer_info, " This is the streamer info")
-
-    console.log(streamer_info)
     const streamer_wins = document.getElementById("games_win_int")
     streamer_wins.innerText = streamer_info["wins"]
 
@@ -145,21 +139,16 @@ export function update_streamer_info(streamer_info){
 }
 
 export function reconcile_bet_array(){
-    console.log("reconcile bet array fired")
     while(battleResultsArray.length > 0){
-        console.log("While loop fired")
         const battle_result = battleResultsArray.shift();
         //This needs to be change back to a while loop.
         if (bet_que.length > 0){
             const bet = bet_que[0]
-            console.log(bet, " This was the bet")
-            console.log(battle_result, " This was the battle result")
             if ((battle_result.battle_time - bet.bet_time) >= 300000){
                 const resolved_bet_element = resolved_bet(bet, battle_result);
                 create_bet_result_object(resolved_bet_element);
                 update_pending_bets()
                 bet_que.shift()
-                //console.log("Bet Que shifted")
             }
         }
     }
@@ -174,14 +163,10 @@ export function update_pending_bets() {
 
 // Call the function immediately
 document.addEventListener("DOMContentLoaded", function () {
-    // Call first_call immediately when DOM is loaded (only once)
     first_call(current_session);
     
-    // Set up interval to call only checkResolvedBets every minute
     setInterval(() => {
         checkResolvedBets(current_session);
     }, 60000); // 60000 milliseconds = 1 minute
     
-    // If you want to use 2 minutes and 30 seconds instead:
-    // }, 150000); // 150000 milliseconds = 2 minutes and 30 seconds
 });

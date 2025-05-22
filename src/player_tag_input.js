@@ -18,25 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const responseData = await response.json();
 
-                if (responseData.valid) { // Assuming API returns { valid: true, username: "PlayerName" }
-                    treasureChest.classList.remove("hidden"); // Show chest
-                    errorMessage.classList.add("hidden"); // Hide error
+                if (responseData.valid) { 
+                    treasureChest.classList.remove("hidden"); 
+                    errorMessage.classList.add("hidden"); 
 
                     // Save to sessionStorage
                     sessionStorage.setItem("playerTag", playerTag);
                     sessionStorage.setItem("clash_name", responseData.clash_name)
-                    sessionStorage.setItem("session_id", Date.now()) //Date.now());
+                    sessionStorage.setItem("session_id", Date.now()) 
                 } else {
-                    treasureChest.classList.add("hidden"); // Hide chest
-                    errorMessage.classList.remove("hidden"); // Show error message
+                    treasureChest.classList.add("hidden"); 
+                    errorMessage.classList.remove("hidden"); 
                 }
             } catch (error) {
-                console.error("Error verifying player tag:", error);
-                errorMessage.classList.remove("hidden"); // Show error on request failure
+                errorMessage.classList.remove("hidden");
             }
         } else {
             treasureChest.classList.add("hidden");
-            errorMessage.classList.add("hidden"); // Hide error for short input
+            errorMessage.classList.add("hidden"); 
         }
     });
 });
@@ -46,20 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const screenNameError = document.getElementById("screenNameError");
     const playerTagInput = document.getElementById("playerTagInput");
 
-    // Disable player tag input by default
+   
     playerTagInput.disabled = true;
 
-    // Validate screen name
+   
     screenNameInput.addEventListener("input", function () {
         const screenName = screenNameInput.value.trim();
 
         if (screenName.length > 0 && screenName.length <= 20) {
             screenNameError.classList.add("hidden");
             sessionStorage.setItem("screenName", screenName);
-            playerTagInput.disabled = false; // Enable player tag input
+            playerTagInput.disabled = false; 
         } else {
             screenNameError.classList.remove("hidden");
-            playerTagInput.disabled = true; // Keep player tag input disabled
+            playerTagInput.disabled = true; 
         }
     });
 });

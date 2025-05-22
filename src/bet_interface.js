@@ -181,8 +181,6 @@ export function flip_crown(tag_id) {
       win_rate_multiplier = 1 + win_pct;
     }
     document.getElementById("bet_potential_payout_int").innerText = Math.round(bet_value * win_rate_multiplier * (crowns_lost_toggle + crowns_taken_toggle + 1))
-    //document.getElementById("bet_potential_payout_int").innerText = document.getElementById("bet_potential_payout_int") 
-   // console.log(value)
   }
 
   document.getElementById("betting_interface_box").addEventListener("change", () =>{
