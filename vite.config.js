@@ -26,27 +26,27 @@ export default defineConfig({
     strictPort: true, // Fail if 3000 is in use
     proxy: {
         '/redirect': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
         '/subscription_handler': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
         '/receive_twitch_event': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
         '/verify_player_tag': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
         '/start_royale_bets': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
         '/update_royale_bets': {
-          target: 'http://localhost:5318',
+          target: 'https://royalebets.win',
           changeOrigin: true,
         },
       }
