@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-8089880054125487">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Prediction Bot</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-cover text-black flex flex-col items-center" style="background-image: url('https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/rbbackground-B8y5y0tgFM8ulCbRBBBNwmeAgfjXR0.png');">
+
+    <!-- Logo -->
+    <a href="/index.html"><img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/rblogo2-iYNC0QSnjdA0v34rmJlC41aFxP9Ldc.png" alt="Logo" class="w-80 mb-6"></a>
+
+    <!-- Description -->
+    <p class="text-2xl text-center max-w-xl mb-6">
+        Enter your Clash ID below to link your Twitch account and start using the bot.
+    </p>
+    <!-- Clash ID Input Component -->
+    <div id="clash-id-container" class="relative">
+        <input 
+            type="text" 
+            id="clash-id-input" 
+            class=" bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
+            placeholder="Enter Clash ID"
+            value=""
+        />
+    </div>
+
+    <!-- Connect with Twitch Button (Initially Hidden) -->
+    <a id="twitch-link" href="#" 
+        class="hidden w-80 text-center mt-4 px-6 py-3 bg-gray-900 hover:bg-purple-700 text-white font-semibold text-lg rounded-lg shadow-lg transition animate-pulse">
+        <img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/twitch_wordmark_extruded_purple-knXqyMmOcClWMPzK2q5V9iwF09XoZ4.svg" class="mx-auto w-28">
+        Connect Now!
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const clashIdText = document.getElementById("clash-id-text");
+    const clashIdInput = document.getElementById("clash-id-input");
+    const twitchLink = document.getElementById("twitch-link");
+
+    // Create an error message element (hidden by default)
+    const errorMessage = document.createElement("p");
+    errorMessage.id = "error-message";
+    errorMessage.className = "hidden text-red-500 mt-2 text-sm";
+    errorMessage.textContent = "Invalid Clash ID. Please check and try again.";
+    clashIdInput.parentNode.appendChild(errorMessage);
+
+
+    // API call function
+    async function verifyClashId(clashId) {
+        try {
+            const response = await fetch("/verify_player_tag", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({clash_id: clashId, "req_page":"streamer_sign_up"}),
+            });
+
+            let data = await response.json();
+            return data; // Assuming API returns { "valid": true } or { "valid": false }
+        } catch (error) {
+            console.error("Error verifying Clash ID:", error);
+            return false;
+        }
+    }
+
+    // Listen for input changes
+    clashIdInput.addEventListener("input", async function () {
+        const clashId = clashIdInput.value.trim();
+
+        // Call API only if input length is greater than 6
+        if (clashId.length > 6) {
+            const data = await verifyClashId(clashId);
+
+            const isValid = data.valid
+            if (isValid) {
+                twitchLink.classList.remove("hidden"); // Show Twitch link
+                twitchLink.href = data.URL// generateTwitchURL(data.URL); // Generate dynamic Twitch URL
+                errorMessage.classList.add("hidden"); // Hide error message if valid
+            } else {
+                twitchLink.classList.add("hidden"); // Hide Twitch link
+                errorMessage.classList.remove("hidden"); // Show error message
+            }
+        } else {
+            twitchLink.classList.add("hidden"); // Hide Twitch link if input is too short
+            errorMessage.classList.add("hidden"); // Hide error message
+        }
+    });
+
+    // Function to generate the Twitch connection URL dynamically
+    function generateTwitchURL(clashId) {
+        return `https://twitch.tv/oauth?clash_id=${encodeURIComponent(clashId)}`;
+    }
+});
+    </script>
+
+</body>
+</html>

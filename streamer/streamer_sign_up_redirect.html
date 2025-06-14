@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Bot FAQ</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-cover text-black flex flex-col items-center " style="background-image: url('https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/rbbackground-B8y5y0tgFM8ulCbRBBBNwmeAgfjXR0.png');">
+
+    <!-- Title -->
+    <a href="/index.html"><img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/rblogo2-iYNC0QSnjdA0v34rmJlC41aFxP9Ldc.png" alt="Logo" class="w-80 mb-6"></a>
+    <p class="text-6xl p-4">You're all set!</p>
+    <!-- Steps Container -->
+    <div class="flex flex-wrap justify-center gap-12 max-w-6xl">
+        
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center justify-center max-w-xs pt-8 bg-linear-to-b from-gray-500 to-gray-800 rounded-4xl p-2 ">
+            <img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/live-wDpyUZKZ53bEqyFouqo3TiLh7LgdXm.png" alt="Go Live on Twitch" class="w-fit  mb-4 p-6 pb-8">
+            <h2 class="text-xl font-semibold text-white">Step 1: Go Live</h2>
+            <p class="text-gray-200">
+                When you go live on Twitch, the app will automatically start. You should see the prediction pop up on your live channel.
+            </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center max-w-xs bg-gray-500 rounded-4xl p-4 bg-linear-to-b from-gray-500 to-gray-800">
+            <img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/icon_menu_battle-bLCwZN88vsmg8Xk8dwfXZx5ld0bIpF.png" alt="Start Battling in Clash Royale" class="h-50 rounded-lg p-4">
+            <h2 class="text-xl font-semibold text-white">Step 2: Begin Battling</h2>
+            <p class="text-gray-200 mt-2">
+                Your audience will have 30 seconds to place their bets. The bot will then continuously check for the battle results until it can end the prediction.
+            </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center max-w-xs bg-gray-500 rounded-4xl p-2 bg-linear-to-b from-gray-500 to-gray-800">
+            <img src="https://xtt6g4okcdjizwxr.public.blob.vercel-storage.com/emote_king_thumbs_up-lTZxcTu8hoNBns6MtnKBmPVQ0qfPZL.png" alt="Engage Your Audience" class="h-50 rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-white">Step 3: Engage Your Audience!</h2>
+            <p class="text-gray-200 mt-2">
+                The bot will continue running predictions, allowing you to focus 100% on your audience!
+            </p>
+        </div>
+
+    </div>
+
+    <div class="m-4 max-w-4xl bg-gray-500 text-white p-6 rounded-3xl shadow-lg bg-linear-to-b from-gray-500 to-gray-800">
+        <h2 class="text-2xl font-bold mb-4 text-center">FAQ</h2>
+
+        <div class="mb-4">
+            <h3 class="text-xl font-semibold">How does it work?</h3>
+            <p class="text-gray-200">
+                The Royale Bets Prediction Bot uses the twitch API to make predictions durring your stream. Once your stream starts, the bot will be activated and begin checking Clash Royale for new battles.
+            </p>
+        </div>
+
+        <div class="mb-4">
+            <h3 class="text-xl font-semibold">Can I still make my own predictions?</h3>
+            <p class="text-gray-200">
+                Yes! Before starting a new prediction, the bot checks for active predictions. If the bot doesn't own the prediction, it waits 30 seconds and tries again. It will wait until there are no active predictions to resume making predictions.
+            </p>
+        </div>
+
+        <div class="mb-4">
+            <h3 class="text-xl font-semibold">How long will people have to make predictions?</h3>
+            <p class="text-gray-200">
+                The window for viewers to place their bets will be 30 seconds.
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-semibold">What if I have multiple Clash Royale accounts?</h3>
+            <p class="text-gray-200">
+                Right now, the bot only supports one Clash Royale ID. However, you can disconnect the bot by revoking twitch permissions, and then re-sign up with whatever ID you want! If you want to read more about disconnecting the bot, click <a href="https://help.twitch.tv/s/article/twitch-account-settings?language=en_US#connections">here</a>.
+            </p>
+        </div>
+</body>
+</html>
+
