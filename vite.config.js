@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import {dirname, resolve} from 'node:path'
+import { resolveObjectURL } from 'node:buffer'
 
 export default defineConfig({
   plugins: [
@@ -15,7 +16,10 @@ export default defineConfig({
         viewer_sign_up: resolve(__dirname, '/viewer/player_tag_input.html'),
         bet_interface: resolve(__dirname, '/viewer/bet_interface.html'),
         streamer_sign_up: resolve(__dirname, '/streamer/streamer_sign_up.html'),
-        streamer_redirect: resolve(__dirname, '/streamer/streamer_sign_up_redirect.html')
+        streamer_redirect: resolve(__dirname, '/about/streamer_sign_up_redirect.html'),
+        about: resolve(__dirname, '/about/faq.html' ),
+        about_royale_bets: resolve(__dirname, "/about/about_royale_bets.html"),
+        contact: resolve(__dirname, "/about/contact.html")
       },
     },
   },
