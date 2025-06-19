@@ -22,6 +22,8 @@ export function create_bet_object(){
     let child1 = document.getElementById("pending_bets")
     document.getElementById("pending_bets").appendChild(pending_bet_html, child1)
     reset_bet()
+    checkAndEnableBetting();
+    console.log("We reached the end of bet create_bet_object.")
   }
 }
 
@@ -39,7 +41,6 @@ document.getElementById("place_bet_button").addEventListener("click", ()=>{
   const bool = validate_bet_amount() 
   if(bool){
     create_bet_object();
-    checkAndEnableBetting();
   }
 
 });
@@ -247,43 +248,50 @@ export function make_session(){
   return current_session
 }
 
-let countdownInterval; // Variable to hold the interval timer
-const betCooldownDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
-const betCountdownDisplay = document.getElementById('bet_countdown_display');
+const betCooldownDuration = 5 * 60 * 1000 // 5 minutes in milliseconds
+const betCountdownDisplay = document.getElementById("bet_countdown_display")
 
 function updateCountdownDisplay(milliseconds) {
+  console.log("Updated countdown display fired")
+  const minutes = Math.floor(milliseconds / 60000)
+  const seconds = Math.floor((milliseconds % 60000) / 1000)
 
-  const minutes = Math.floor(milliseconds / 60000);
-  const seconds = Math.floor((milliseconds % 60000) / 1000);
+  const formattedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+  console.log(`${formattedMinutes}:${formattedSeconds}`)
+  betCountdownDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`
 
-  const formattedMinutes = minutes < 10 ? `${minutes}` : `${minutes}`;
-  const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-
-  betCountdownDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
-
-  if (milliseconds === 0){
-    betCountdownDisplay.textContent = ``; 
-  }
 
 }
 
-function startCountdown(endTime) {
-  // Clear any existing interval
-  //document.getElementById('bet_countdown_label').textContent = "Awaiting Battle Results...";
-  if (countdownInterval !== null) {
-    clearInterval(countdownInterval);
-  }
-  
-  countdownInterval = setInterval(() => {
-      const now = Date.now();
-      const timeRemaining = endTime - now;
+let countdownTimeout = null;
 
-      if (timeRemaining <= 0) {
-          return
-      } else {
-          updateCountdownDisplay(timeRemaining);
-      }
-  }, 1000); // Update every 1 second
+function startCountdown(endTime) {
+  console.log("Top of Start countdown fired")
+  // Clear any existing timeout
+  if (countdownTimeout !== null) {
+    console.log("Cleated Timeout")
+    clearTimeout(countdownTimeout);
+  }
+
+  function loop() {
+    const now = Date.now();
+    const timeRemaining = endTime - now;
+
+    if (timeRemaining <= 0) {
+      // Optionally do something when countdown ends
+        document.getElementById('bet_countdown_label').textContent = "Awaiting Battle Results..."; // Reset label if changed
+        betCountdownDisplay.textContent = "" 
+      return;
+    } else {
+      updateCountdownDisplay(timeRemaining);
+
+      // Schedule the next execution only after the current one completes
+      countdownTimeout = setTimeout(loop, 1000);
+    }
+  }
+  console.log("Countdown Started")
+  loop(); // Start the countdown
 }
 
 export function checkAndEnableBetting() {
@@ -294,20 +302,23 @@ export function checkAndEnableBetting() {
       const cooldownEndTime = lastBetTime + betCooldownDuration;
 
       if (Date.now() >= cooldownEndTime) {
-        console.log("CooldownENdTime: "+ cooldownEndTime)
+        console.log("CooldownEndTime: "+ cooldownEndTime)
         console.log("now is greater than cooldownend time.")
            // There's a bet, and the cooldown has passed
           document.getElementById('bet_countdown_label').textContent = "Awaiting Battle Results..."; // Reset label if changed
+         betCountdownDisplay.textContent.textContent = ""
+           
       } else {
         console.log("CooldownENdTime: "+ cooldownEndTime) 
         console.log("Start Count down fired: ")
-          startCountdown(cooldownEndTime);
+        document.getElementById('bet_countdown_label').textContent = "Bet valid in: "; 
+        startCountdown(cooldownEndTime);
       }
   } else {
     console.log("Bet Que was empty?")
       // No bets in the array, betting should be allowed (or perhaps not depending on your logic)
-      betCountdownDisplay.textContent = "";
+      //betCountdownDisplay.textContent = "";
        // placeBetButton.disabled = false; // Example
-      document.getElementById('bet_countdown_label').textContent = "Place your next Bet!:"; // Reset label if changed
+      document.getElementById('bet_countdown_label').textContent = "Place your next Bet!"; // Reset label if changed
   }
 }
