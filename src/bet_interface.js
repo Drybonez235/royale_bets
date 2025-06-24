@@ -306,7 +306,7 @@ export function checkAndEnableBetting() {
         console.log("now is greater than cooldownend time.")
            // There's a bet, and the cooldown has passed
           document.getElementById('bet_countdown_label').textContent = "Awaiting Battle Results..."; // Reset label if changed
-         betCountdownDisplay.textContent.textContent = ""
+         betCountdownDisplay.textContent = ""
            
       } else {
         console.log("CooldownENdTime: "+ cooldownEndTime) 
